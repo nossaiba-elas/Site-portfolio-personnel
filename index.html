@@ -69,6 +69,9 @@
       letter-spacing: -0.02em;
     }
 
+    .skip-link { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { left: 1rem; top: 1rem; width: auto; height: auto; padding: 0.5rem 0.75rem; background: var(--accent); color: #fff; border-radius: 6px; z-index: 400; }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -96,45 +99,111 @@
       color: var(--text);
     }
 
+    .lang-switch {
+      display: inline-flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    /* Nav search styles */
+    .nav-search { position: relative; display: inline-block; margin-right: 0.5rem; }
+    .search-input {
+      width: 220px; max-width: 38vw; padding: 0.4rem 0.6rem; border-radius: 10px; border: 1px solid var(--border);
+      background: #fff; font-size: 0.9rem; color: var(--text); outline: none; transition: box-shadow .12s, transform .08s;
+    }
+    .search-input:focus { box-shadow: 0 6px 20px rgba(16,24,40,0.08); transform: translateY(-1px); }
+    .search-results {
+      position: absolute; top: 110%; left: 0; right: 0; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; box-shadow: 0 12px 30px rgba(16,24,40,0.08); max-height: 320px; overflow: auto; z-index: 220;
+      padding: 0.35rem; display: none;
+    }
+    .search-hint { margin: 0.4rem 0 0.1rem; font-size: 0.8rem; color: var(--text-muted); }
+    .search-results.open { display: block; }
+    .search-item { padding: 0.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; color: var(--text-muted); }
+    .search-item:hover { background: var(--accent-glow); color: var(--text); }
+    .search-item.disabled { cursor: default; color: var(--text); opacity: 0.78; }
+    .search-item.disabled:hover { background: transparent; color: var(--text); }
+    .search-item .result-title { font-weight: 700; color: var(--text); display:block; }
+    .search-item .result-snippet { font-size: 0.85rem; color: var(--text-muted); }
+    mark { background: var(--accent); color: #fff; padding: 0 4px; border-radius: 3px; }
+    .search-highlight { box-shadow: 0 0 0 4px rgba(108,60,224,0.06); transition: box-shadow .24s; }
+
+    /* Back to top button */
+    .back-to-top { position: fixed; right: 18px; bottom: 18px; background: var(--accent); color: #fff; border: none; width: 44px; height: 44px; border-radius: 10px; display: none; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(108,60,224,0.12); cursor: pointer; z-index: 300; }
+    .back-to-top.visible { display: flex; }
+
+    .lang-btn {
+      padding: 0.28rem 0.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(108,60,224,0.12);
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.18s, color 0.18s, transform 0.12s;
+    }
+
+    .lang-btn:hover { transform: translateY(-1px); color: var(--text); }
+    .lang-btn.active { background: var(--accent); color: #fff; box-shadow: 0 10px 30px rgba(108,60,224,0.16); }
+
+    /* Language switch animation: subtle cross-fade + upward slide */
+    @media (prefers-reduced-motion: reduce) {
+      [data-i18n] { transition: none !important; transform: none !important; opacity: 1 !important; }
+    }
+    [data-i18n] {
+      transition: opacity 360ms cubic-bezier(.2,.9,.2,1), transform 360ms cubic-bezier(.2,.9,.2,1);
+      will-change: opacity, transform;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    body.lang-switching [data-i18n] {
+      opacity: 0;
+      transform: translateY(10px) scale(0.995);
+    }
+
     /* Hero */
     .hero {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
+      display: grid;
+      place-items: center;
+      padding-top: 72px;
       position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, rgba(108, 60, 224, 0.18), transparent 22%),
+                  radial-gradient(circle at bottom right, rgba(108, 197, 255, 0.16), transparent 20%),
+                  linear-gradient(180deg, #F8F6FF 0%, #FFFFFF 100%);
     }
 
-    .hero-bg-text {
+    .hero::before {
+      content: '';
       position: absolute;
-      right: -1%;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(6rem, 20vw, 15rem);
-      font-weight: 800;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--outline);
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.45), transparent 60%);
       pointer-events: none;
-      user-select: none;
-      line-height: 0.85;
-      z-index: 0;
     }
 
     .hero-inner {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 1fr);
+      gap: 3rem;
+      align-items: start;
       padding: 4rem 0;
+    }
+
+    .hero-copy {
+      max-width: 640px;
     }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.65rem;
       font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1.5rem;
@@ -142,83 +211,253 @@
 
     .hero-eyebrow::before {
       content: '';
-      display: block;
-      width: 24px;
+      width: 28px;
       height: 2px;
       background: var(--accent);
     }
 
     .hero h1 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 800;
-      line-height: 1.02;
-      letter-spacing: -0.03em;
+      line-height: 0.98;
+      letter-spacing: -0.05em;
       margin-bottom: 1rem;
     }
 
     .hero h1 em {
-      font-style: normal;
+      display: block;
       color: var(--accent);
+      font-style: normal;
     }
 
     .hero-title {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 1rem;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-weight: 600;
+      color: #1B1D24;
+      margin-bottom: 1.5rem;
     }
 
     .hero-tagline {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--text-muted);
-      max-width: 540px;
-      margin-bottom: 2.5rem;
+      max-width: 580px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(108, 60, 224, 0.12);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 22px 40px rgba(108, 60, 224, 0.06);
     }
 
     .hero-actions {
       display: flex;
-      gap: 0.875rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
+    .hero-panel {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(108, 60, 224, 0.14);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 24px 60px rgba(108, 60, 224, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-panel h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero-panel p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .project,
+    .exp-item,
+    .edu-item,
+    .skill-group,
+    .contact-wrap {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp 0.9s ease forwards;
+    }
+
+    .hero-copy { animation-delay: 0.1s; }
+    .hero-panel { animation-delay: 0.18s; }
+    .skills-grid .skill-group { animation-delay: 0.22s; }
+    .projects-grid .project { animation-delay: 0.26s; }
+    .exp-list .exp-item { animation-delay: 0.3s; }
+    .edu-item { animation-delay: 0.34s; }
+    .contact-wrap { animation-delay: 0.38s; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .hero-point-icon {
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(108, 60, 224, 0.14);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .hero-point strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-point span {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .hero-photo-wrapper {
+      width: 260px;
+      height: 260px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.25rem;
+      border: 1px solid rgba(108, 60, 224, 0.18);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,250,255,0.85));
+      box-shadow: 0 28px 70px rgba(108, 60, 224, 0.12);
+      transform: scale(0.96);
+      animation: photoPop 0.9s ease forwards;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .hero-photo-wrapper:hover {
+      transform: scale(1);
+      box-shadow: 0 34px 88px rgba(108, 60, 224, 0.18);
+    }
+
+    .hero-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .hero-photo-wrapper:hover img {
+      transform: scale(1.03);
+    }
+
+    @keyframes photoPop {
+      to { transform: scale(1); }
+    }
+
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Enhanced controls and micro-interactions */
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.22s ease;
+      gap: 0.6rem;
+      padding: 0.65rem 1rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 700;
       cursor: pointer;
-      border: 1.5px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.18s ease, background-color 0.18s;
+      text-decoration: none;
+      color: inherit;
     }
 
     .btn-primary {
-      background: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
       color: #fff;
+      box-shadow: 0 12px 40px var(--accent-glow);
+      border: none;
     }
 
     .btn-primary:hover {
-      background: var(--accent-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--accent-glow);
+      transform: translateY(-3px);
+      box-shadow: 0 22px 60px rgba(108,60,224,0.16);
     }
 
     .btn-ghost {
       background: transparent;
-      color: var(--text);
-      border-color: var(--border);
+      color: var(--accent);
+      border: 1px solid rgba(108,60,224,0.12);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
+    .btn-ghost:hover { transform: translateY(-3px); background: rgba(108,60,224,0.04); }
+
+    .pill { transition: transform 0.15s ease, box-shadow 0.18s ease; }
+    .pill:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(108,60,224,0.06); }
+
+    /* Subtle hero-panel emphasis on hover */
+    .hero-panel { position: relative; overflow: visible; }
+    .hero-panel::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 28px;
+      box-shadow: 0 28px 60px rgba(108,60,224,0.04);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.18s ease;
     }
+    .hero-panel:hover::after { opacity: 1; }
+
+    /* Photo wrapper responsive tweak: keep circular portrait on all sizes */
+    .hero-photo-wrapper { max-width: 260px; width: 260px; height: 260px; border-radius: 50%; overflow: hidden; }
+    @media (max-width: 768px) { .hero-photo-wrapper { width: 220px; height: 220px; margin: 0 auto 1.25rem; border-radius: 50%; } }
 
     /* Stats */
     .stats {
@@ -274,7 +513,26 @@
       font-size: clamp(1.75rem, 4vw, 2.4rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 72px;
+      height: 4px;
+      margin-top: 1rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    }
+
+    .section-description {
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
     }
 
     /* About */
@@ -376,17 +634,18 @@
     .project {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 22px;
       padding: 1.75rem;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 20px 55px rgba(108, 60, 224, 0.08);
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
 
     .project:hover {
       border-color: var(--accent);
       transform: translateY(-5px);
-      box-shadow: 0 16px 40px var(--accent-glow);
+      box-shadow: 0 28px 70px rgba(108, 60, 224, 0.15);
     }
 
     .project-meta {
@@ -419,12 +678,17 @@
     .exp-item {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 20px;
       padding: 1.5rem 1.75rem;
-      transition: border-color 0.25s;
+      box-shadow: 0 18px 50px rgba(108, 60, 224, 0.06);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
 
-    .exp-item:hover { border-color: var(--accent); }
+    .exp-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 24px 60px rgba(108, 60, 224, 0.1);
+    }
 
     .exp-header {
       display: flex;
@@ -483,14 +747,16 @@
     .edu-item {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 20px;
       padding: 1.75rem;
-      transition: border-color 0.25s, transform 0.25s;
+      box-shadow: 0 18px 48px rgba(108, 60, 224, 0.06);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
 
     .edu-item:hover {
       border-color: var(--accent);
       transform: translateY(-3px);
+      box-shadow: 0 24px 60px rgba(108, 60, 224, 0.1);
     }
 
     .edu-item.primary { border-left: 3px solid var(--accent); }
@@ -635,57 +901,114 @@
   </style>
 </head>
 <body>
+  <a href="#apropos" class="skip-link">Aller au contenu</a>
 
   <nav>
     <div class="container">
       <a href="#" class="logo">Nossaiba El Asri</a>
+      <div class="nav-search" role="search">
+        <input id="siteSearch" class="search-input" type="search" placeholder="Rechercher ( / )" aria-label="Rechercher le site" />
+          <div id="searchResults" class="search-results" aria-hidden="true"></div>
+      </div>
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <div class="lang-switch" aria-hidden="false">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#projets">Projets</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#formation">Formation</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#competences" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+        <li><a href="#formation" data-i18n="nav.education">Formation</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero -->
   <header class="hero">
-    <div class="hero-bg-text" aria-hidden="true">NEA</div>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">Montréal, QC — Bilingue FR / EN — she/her</p>
-      <h1>Nossaiba<br><em>El Asri</em></h1>
-      <p class="hero-title">Développeuse Web Full-Stack &amp; Technicienne IT</p>
-      <p class="hero-tagline">
-        Développeuse web junior bilingue — applications propres avec React.js, Node.js, ASP.NET MVC et SQL. Technicienne IT : support, dépannage Windows/Active Directory et gestion de tickets.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Me contacter</a>
-        <a href="#projets" class="btn btn-ghost">Voir mes projets</a>
-        <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn →</a>
+      <div class="hero-copy">
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Disponible pour un rôle junior ou support IT hybride</p>
+        <h1>Bonjour, je suis <em data-i18n="hero.name">Nossaiba El&nbsp;Asri</em></h1>
+        <p class="hero-title" data-i18n="hero.title">Développeuse Web Full-Stack &amp; Technicienne IT à Montréal</p>
+        <p class="hero-tagline" data-i18n="hero.tagline">
+          J'aide les équipes à transformer les idées en interfaces claires, des applications performantes et des services support fiables. Bilingue français-anglais, j’allie développement moderne et résolution technique pour des résultats rapides. Je présente deux projets récents de 2025, et je peux partager d'autres réalisations sur demande.
+        </p>
+
+        <div class="hero-pills">
+          <span class="pill" data-i18n="pill.hire">Profil prête à embaucher</span>
+          <span class="pill" data-i18n="pill.bilingual">Bilingue FR / EN</span>
+          <span class="pill" data-i18n="pill.support">Support &amp; Dev</span>
+          <span class="pill" data-i18n="pill.fastlearn">Apprentissage rapide</span>
+          <span class="pill" data-i18n="pill.agile">Agile / Scrum</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Contactez-moi</a>
+          <a href="#projets" class="btn btn-ghost">Voir mes projets</a>
+        </div>
       </div>
+
+      <aside class="hero-panel">
+        <h3 data-i18n="hero.panel.title">Recruteurs, voici mes forces</h3>
+        <p data-i18n="hero.panel.p">
+          Je propose un profil opérationnel capable de livrer du développement web robuste et d’assurer un support technique structuré dès le premier sprint. Curieuse et créative, j’apprends vite pour m’adapter à chaque équipe.
+        </p>
+        <div class="hero-photo-wrapper">
+          <img src="IMG_4179.jpg" alt="Photo de Nossaiba El Asri" />
+        </div>
+        <div class="availability" style="background: rgba(108, 60, 224, 0.08); border-radius: 12px; padding: 0.85rem; margin: 1rem 0; text-align: center; font-weight: 600; font-size: 0.9rem;">
+          <span data-i18n="availability.now">✓ Disponible immédiatement</span>
+          <span> • </span>
+          <span data-i18n="availability.reloc">Flexible pour relocalisation</span>
+        </div>
+        <div class="hero-points">
+          <div class="hero-point">
+            <div class="hero-point-icon">01</div>
+            <div>
+              <strong data-i18n="point.1.title">Double compétence</strong>
+              <span data-i18n="point.1.desc">Développement frontend/back-end + support IT.</span>
+            </div>
+          </div>
+          <div class="hero-point">
+            <div class="hero-point-icon">02</div>
+            <div>
+              <strong data-i18n="point.2.title">Livraison fiable</strong>
+              <span data-i18n="point.2.desc">Applications nettes, tests, documentation et suivi.</span>
+            </div>
+          </div>
+          <div class="hero-point">
+            <div class="hero-point-icon">03</div>
+            <div>
+              <strong data-i18n="point.3.title">Communication fluide</strong>
+              <span data-i18n="point.3.desc">Clarté avec les recruteurs et collaboration en équipe.</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="resume-link"><span data-i18n="resume.link">LinkedIn</span></a>
+      </aside>
     </div>
   </header>
 
   <div class="container">
     <div class="stats">
       <div class="stat">
-        <div class="stat-num" data-target="2">0</div>
-        <div class="stat-label">Projets académiques livrés</div>
-      </div>
-      <div class="stat">
         <div class="stat-num" data-target="3">0</div>
-        <div class="stat-label">Années d'expérience professionnelle</div>
+        <div class="stat-label" data-i18n="stat.exp">Années d'expérience professionnelle</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-target="15">0</div>
-        <div class="stat-label">Technologies maîtrisées</div>
+        <div class="stat-num" data-target="4">0</div>
+        <div class="stat-label" data-i18n="stat.projects">Projets livrés et présentés</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="18">0</div>
+        <div class="stat-label" data-i18n="stat.tools">Technologies et outils maîtrisés</div>
       </div>
       <div class="stat">
         <div class="stat-num" data-target="2">0</div>
-        <div class="stat-label">Langues (FR &amp; EN)</div>
+        <div class="stat-label" data-i18n="stat.langs">Langues parlées</div>
       </div>
     </div>
   </div>
@@ -695,19 +1018,13 @@
   <!-- À propos -->
   <section id="apropos">
     <div class="container">
-      <p class="section-eyebrow">À propos</p>
-      <h2 class="section-title">Qui je suis</h2>
+      <p class="section-eyebrow" data-i18n="about.eyebrow">À propos</p>
+      <h2 class="section-title" data-i18n="about.title">Qui je suis</h2>
       <div class="about-grid">
         <div class="about-text">
-          <p>
-            Je suis une développeuse web junior bilingue avec un AEC en Programmation Web et Mobile (Institut Teccart, Montréal). Je crée des applications web propres avec React.js, Node.js, ASP.NET MVC et des bases de données SQL.
-          </p>
-          <p>
-            Je suis également technicienne IT avec de l'expérience en support technique, dépannage Windows/Active Directory et gestion de tickets. Bilingue français-anglais, j'aime documenter, former et résoudre des problèmes dans des environnements rapides.
-          </p>
-          <p>
-            Mon profil combine développement full-stack et support informatique — une double compétence qui me permet de comprendre les systèmes en profondeur et d'accompagner efficacement les utilisateurs comme les équipes techniques.
-          </p>
+          <p data-i18n="about.p1">Je suis une développeuse web junior bilingue avec un AEC en Programmation Web et Mobile (Institut Teccart, Montréal). Je crée des applications web propres avec React.js, Node.js, ASP.NET MVC et des bases de données SQL.</p>
+          <p data-i18n="about.p2">Je suis également technicienne IT avec de l'expérience en support technique, dépannage Windows/Active Directory et gestion de tickets. Bilingue français-anglais, j'aime documenter, former et résoudre des problèmes dans des environnements rapides.</p>
+          <p data-i18n="about.p3">J'aime dessiner, apprendre vite et apporter de l'énergie positive dans une équipe. Mon profil combine développement full-stack et support informatique — une double compétence qui me permet de comprendre les systèmes en profondeur et d'accompagner efficacement les utilisateurs comme les équipes techniques.</p>
         </div>
         <div class="about-cards">
           <div class="about-card">
@@ -808,8 +1125,11 @@
           <div class="tags">
             <span>Git / GitHub</span>
             <span>VS Code</span>
+            <span>Android Studio</span>
+            <span>VMware</span>
             <span>Postman</span>
             <span>AWS</span>
+            <span>Docker</span>
             <span>Agile / Scrum</span>
           </div>
         </div>
@@ -818,12 +1138,28 @@
           <h3>Soft skills</h3>
           <div class="tags">
             <span>Bilingue FR / EN</span>
-            <span>Résolution de problèmes</span>
-            <span>Documentation technique</span>
-            <span>Communication</span>
+            <span>Rapidité d'apprentissage</span>
+            <span>Bonne écoute</span>
+            <span>Écoute active</span>
+            <span>Adaptabilité</span>
+            <span>Créativité</span>
+            <span>Curiosité</span>
+            <span>Empathie</span>
             <span>Travail d'équipe</span>
-            <span>Résolution au premier contact</span>
-            <span>Apprentissage rapide</span>
+            <span>Résolution de problèmes</span>
+            <span>Passion pour le dessin</span>
+          </div>
+        </div>
+
+        <div class="skill-group" style="background: rgba(108, 60, 224, 0.05); border-color: rgba(108, 60, 224, 0.2);">
+          <h3>Intérêts personnels</h3>
+          <div class="tags">
+            <span>Cuisine</span>
+            <span>Découverte de nouveaux lieux</span>
+            <span>Sports &amp; activités</span>
+            <span>Voyages &amp; aventures</span>
+            <span>Apprentissage continu</span>
+            <span>Travail en équipe inclusive</span>
           </div>
         </div>
 
@@ -838,14 +1174,12 @@
     <div class="container">
       <p class="section-eyebrow">Portfolio</p>
       <h2 class="section-title">Projets</h2>
+      <p class="section-description">Voici deux projets récents de 2025. J'ai réalisé de nombreux autres prototypes et applications que je peux présenter sur demande.</p>
       <div class="projects-grid">
-
         <article class="project">
-          <p class="project-meta">Projet académique · 2024</p>
-          <h3>Health Management System</h3>
-          <p>
-            Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.
-          </p>
+          <p class="project-meta" data-i18n="project1.meta">Projet académique · 2025</p>
+          <h3 data-i18n="project1.title">Health Management System</h3>
+          <p data-i18n="project1.desc">Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.</p>
           <div class="tags">
             <span>ASP.NET MVC</span>
             <span>C#</span>
@@ -856,11 +1190,9 @@
         </article>
 
         <article class="project">
-          <p class="project-meta">Projet académique · 2024</p>
-          <h3>VroomVroom — Plateforme de covoiturage</h3>
-          <p>
-            Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.
-          </p>
+          <p class="project-meta" data-i18n="project2.meta">Projet académique · 2025</p>
+          <h3 data-i18n="project2.title">VroomVroom — Plateforme de covoiturage</h3>
+          <p data-i18n="project2.desc">Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.</p>
           <div class="tags">
             <span>React.js</span>
             <span>HTML / CSS / JS</span>
@@ -886,48 +1218,47 @@
         <div class="exp-item">
           <div class="exp-header">
             <div>
-              <h3>Développeuse Web Junior</h3>
-              <p class="exp-org">Sitel Maroc</p>
+              <h3 data-i18n="exp1.title">Commis fruits et légumes</h3>
+              <p class="exp-org" data-i18n="exp1.org">Metro Notre-Dame — Montréal, QC</p>
             </div>
-            <span class="exp-date">Mai 2022 — Août 2023</span>
+            <span class="exp-date" data-i18n="exp1.date">Sep 2024 — Fév 2026</span>
           </div>
           <ul class="exp-bullets">
-            <li>Développement et maintenance de fonctionnalités web en PHP, JavaScript, HTML/CSS</li>
-            <li>Correction de bogues et tests fonctionnels sur applications internes</li>
-            <li>Requêtes SQL pour extraire et valider les données utilisateurs</li>
-            <li>Collaboration en équipe agile, livraison de sprints dans les délais</li>
+            <li data-i18n="exp1.b1">Gestion des demandes clients et résolution proactive des problèmes.</li>
+            <li data-i18n="exp1.b2">Correction des écarts de caisse et production de rapports précis.</li>
+            <li data-i18n="exp1.b3">Formation des nouveaux employés sur les outils et procédures internes.</li>
+            <li data-i18n="exp1.b4">Travail d'équipe efficace en période très achalandée.</li>
           </ul>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
             <div>
-              <h3>Commis aux fruits et légumes — Temps partiel</h3>
-              <p class="exp-org">Metro Notre-Dame — Montréal, QC</p>
+              <h3 data-i18n="exp2.title">Développeuse Web Junior</h3>
+              <p class="exp-org" data-i18n="exp2.org">Sitel Maroc</p>
             </div>
-            <span class="exp-date">Sep 2024 — Fév 2026</span>
+            <span class="exp-date" data-i18n="exp2.date">Mai 2022 — Août 2023</span>
           </div>
           <ul class="exp-bullets">
-            <li>Gestion des demandes clients en période achalandée</li>
-            <li>Correction des erreurs de caisse et imprimante</li>
-            <li>Suivi des ventes quotidiennes et signalement des écarts</li>
-            <li>Formation des nouveaux employés sur systèmes et procédures</li>
-            <li>Organisation de rotation des stocks pour réduire les pertes</li>
+            <li data-i18n="exp2.b1">Développement et maintenance de fonctionnalités web en PHP, JavaScript, HTML/CSS.</li>
+            <li data-i18n="exp2.b2">Analyse des bogues, tests fonctionnels et optimisation de l'expérience utilisateur.</li>
+            <li data-i18n="exp2.b3">Requêtes SQL pour extraire, corriger et valider les données métiers.</li>
+            <li data-i18n="exp2.b4">Participation aux sprints Agile et collaboration avec les équipes QA.</li>
           </ul>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
             <div>
-              <h3>Stagiaire en communication</h3>
-              <p class="exp-org">Intelcia Morocco</p>
+              <h3 data-i18n="exp3.title">Stagiaire en communication</h3>
+              <p class="exp-org" data-i18n="exp3.org">Intelcia Morocco</p>
             </div>
-            <span class="exp-date">Juin 2021 — Août 2021</span>
+            <span class="exp-date" data-i18n="exp3.date">Juin 2021 — Août 2021</span>
           </div>
           <ul class="exp-bullets">
-            <li>Support technique par chat et courriel</li>
-            <li>Rédaction de guides IT et documentation interne</li>
-            <li>Routage des cas complexes selon les procédures</li>
+            <li data-i18n="exp3.b1">Support technique par chat et courriel pour des utilisateurs internes.</li>
+            <li data-i18n="exp3.b2">Rédaction de guides IT et documentation pour les équipes.</li>
+            <li data-i18n="exp3.b3">Routage des cas complexes vers les spécialistes appropriés.</li>
           </ul>
         </div>
 
@@ -1015,15 +1346,13 @@
   <section id="contact">
     <div class="container">
       <p class="section-eyebrow">Contact</p>
-      <h2 class="section-title">Travaillons ensemble</h2>
+      <h2 class="section-title" data-i18n="contact.title">Travaillons ensemble</h2>
       <div class="contact-wrap">
-        <p>
-          Vous avez une opportunité ou souhaitez en savoir plus sur mon profil ? Je suis disponible et je réponds rapidement.
-        </p>
+        <p data-i18n="contact.prompt">Vous avez une opportunité ou souhaitez en savoir plus sur mon profil ? Je suis disponible et je réponds rapidement.</p>
         <div class="contact-links">
           <a href="mailto:elasrinossaiba@gmail.com" class="contact-link">✉ elasrinossaiba@gmail.com</a>
           <a href="tel:+14384702805" class="contact-link">📞 438-470-2805</a>
-          <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="contact-link">in LinkedIn</a>
+          <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="contact-link"><span data-i18n="contact.linkedin">LinkedIn</span></a>
         </div>
       </div>
     </div>
@@ -1031,17 +1360,165 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 Nossaiba El Asri — Montréal, Québec</p>
+      <p data-i18n="footer.copyright">© 2026 Nossaiba El Asri — Montréal, Québec</p>
     </div>
   </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen);
     });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => { navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+    });
+
+    // --- Client-side site search: index translatable elements and headings ---
+    const searchInput = document.getElementById('siteSearch');
+    const searchResults = document.getElementById('searchResults');
+    let searchIndex = [];
+    let lastQuery = '';
+
+    function normalizeText(value) {
+      return value.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+    }
+
+    function levenshtein(a, b) {
+      const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j - 1] + (a[j - 1] === b[i - 1] ? 0 : 1)
+          );
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    function buildSearchIndex() {
+      searchIndex = [];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const text = el.textContent.trim();
+        if (!text) return;
+        searchIndex.push({ text, normalized: normalizeText(text), el });
+      });
+      document.querySelectorAll('.section-title, h1, h2, h3').forEach(el => {
+        if (el.closest('nav')) return;
+        const text = el.textContent.trim();
+        if (!text) return;
+        if (!searchIndex.some(s => s.el === el)) searchIndex.push({ text, normalized: normalizeText(text), el });
+      });
+    }
+
+    function searchMatches(query) {
+      const normalizedQuery = normalizeText(query);
+      if (!normalizedQuery) return [];
+      return searchIndex
+        .map(item => {
+          const target = item.normalized;
+          if (target.includes(normalizedQuery)) {
+            return { item, score: target.indexOf(normalizedQuery) };
+          }
+          const words = normalizedQuery.split(/\s+/).filter(Boolean);
+          const allWordsPresent = words.every(word => target.includes(word));
+          if (allWordsPresent) {
+            const positions = words.reduce((sum, word) => sum + target.indexOf(word), 0);
+            return { item, score: 20 + positions };
+          }
+          const distance = levenshtein(normalizedQuery, target);
+          const threshold = Math.min(10, Math.floor(normalizedQuery.length * 0.35) + 1);
+          return distance <= threshold ? { item, score: 40 + distance } : { item, score: Infinity };
+        })
+        .filter(result => result.score < Infinity)
+        .sort((a, b) => a.score - b.score)
+        .slice(0, 8)
+        .map(result => result.item);
+    }
+
+    function closeResults() {
+      searchResults.classList.remove('open');
+      searchResults.setAttribute('aria-hidden', 'true');
+    }
+
+    function renderResults(matches) {
+      searchResults.innerHTML = '';
+      if (!matches.length) {
+        const item = document.createElement('div');
+        item.className = 'search-item disabled';
+        item.textContent = lastQuery ? 'Aucun résultat trouvé.' : 'Commencez à écrire pour trouver du contenu.';
+        if (document.documentElement.lang === 'en') item.textContent = lastQuery ? 'No results found.' : 'Start typing to find content.';
+        searchResults.appendChild(item);
+        searchResults.classList.add('open');
+        searchResults.setAttribute('aria-hidden', 'false');
+        return;
+      }
+      matches.slice(0, 8).forEach(m => {
+        const item = document.createElement('div');
+        item.className = 'search-item';
+        item.tabIndex = 0;
+        const title = document.createElement('span'); title.className = 'result-title';
+        const snippet = document.createElement('span'); snippet.className = 'result-snippet';
+        const q = lastQuery;
+        const idx = m.text.toLowerCase().indexOf(q);
+        if (idx >= 0) {
+          title.innerHTML = m.text.replace(new RegExp(q, 'ig'), match => `<mark>${match}</mark>`).slice(0, 120);
+          let start = Math.max(0, idx - 40);
+          let snip = m.text.slice(start, start + 140);
+          snippet.innerHTML = snip.replace(new RegExp(q, 'ig'), match => `<mark>${match}</mark>`);
+        } else {
+          title.textContent = m.text.slice(0, 80);
+          snippet.textContent = m.text.slice(80, 160);
+        }
+        item.appendChild(title); item.appendChild(snippet);
+        item.addEventListener('click', () => {
+          m.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          m.el.classList.add('search-highlight');
+          setTimeout(() => m.el.classList.remove('search-highlight'), 2000);
+          closeResults();
+          searchInput.blur();
+        });
+        item.addEventListener('keydown', e => { if (e.key === 'Enter') item.click(); });
+        searchResults.appendChild(item);
+      });
+      searchResults.classList.add('open');
+      searchResults.setAttribute('aria-hidden', 'false');
+    }
+
+    searchInput && searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.trim();
+      lastQuery = q.toLowerCase();
+      if (!q) { closeResults(); return; }
+      const results = searchMatches(q);
+      renderResults(results);
+    });
+
+    searchInput && searchInput.addEventListener('focus', () => {
+      if (searchResults.children.length) { searchResults.classList.add('open'); searchResults.setAttribute('aria-hidden', 'false'); }
+    });
+
+    document.addEventListener('click', (e) => { if (!e.target.closest('.nav-search')) closeResults(); });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); searchInput.select(); }
+      if (e.key === 'Escape') { searchInput.value = ''; closeResults(); searchInput.blur(); }
+    });
+
+    // initial index
+    buildSearchIndex();
+
+    // Back-to-top show/hide
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (!backToTop) return;
+      if (window.scrollY > 360) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
+    });
+    backToTop && backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     const counters = document.querySelectorAll('.stat-num');
     const observer = new IntersectionObserver((entries) => {
@@ -1064,6 +1541,150 @@
     }, { threshold: 0.5 });
 
     counters.forEach(c => observer.observe(c));
+
+    // --- Internationalization (FR / EN) ---
+    const translations = {
+      'nav.about': { fr: 'À propos', en: 'About' },
+      'nav.skills': { fr: 'Compétences', en: 'Skills' },
+      'nav.projects': { fr: 'Projets', en: 'Projects' },
+      'nav.experience': { fr: 'Expérience', en: 'Experience' },
+      'nav.education': { fr: 'Formation', en: 'Education' },
+      'nav.contact': { fr: 'Contact', en: 'Contact' },
+
+      'hero.eyebrow': { fr: 'Disponible pour un rôle junior ou support IT hybride', en: 'Available for junior or hybrid IT support roles' },
+      'hero.name': { fr: 'Nossaiba El\u00A0Asri', en: 'Nossaiba El\u00A0Asri' },
+      'hero.title': { fr: 'Développeuse Web Full-Stack &amp; Technicienne IT à Montréal', en: 'Full-Stack Web Developer &amp; IT Technician in Montreal' },
+      'hero.tagline': { fr: "J'aide les équipes à transformer les idées en interfaces claires, des applications performantes et des services support fiables. Bilingue français-anglais, j\u2019allie développement moderne et résolution technique pour des résultats rapides.", en: 'I help teams turn ideas into clear interfaces, performant apps and reliable support services. Bilingual French-English; I combine modern development and technical troubleshooting for fast results.' },
+
+      'pill.hire': { fr: 'Profil prête à embaucher', en: 'Ready-to-hire profile' },
+      'pill.bilingual': { fr: 'Bilingue FR / EN', en: 'Bilingual FR / EN' },
+      'pill.support': { fr: 'Support &amp; Dev', en: 'Support &amp; Dev' },
+      'pill.fastlearn': { fr: 'Apprentissage rapide', en: 'Fast learner' },
+      'pill.agile': { fr: 'Agile / Scrum', en: 'Agile / Scrum' },
+
+      'hero.panel.title': { fr: 'Recruteurs, voici mes forces', en: "Recruiters — what I bring" },
+      'hero.panel.p': { fr: 'Je propose un profil opérationnel capable de livrer du développement web robuste et d\u2019assurer un support technique structuré d\u00e8s le premier sprint. Curieuse et cr\u00e9ative, j\u2019apprends vite pour m\u2019adapter \u00e0 chaque \u00e9quipe.', en: 'I offer an operational profile able to deliver robust web development and structured technical support from day one. Curious and creative, I learn fast to adapt to each team.' },
+      'availability.now': { fr: '✓ Disponible immédiatement', en: '✓ Available now' },
+      'availability.reloc': { fr: 'Flexible pour relocalisation', en: 'Flexible to relocate' },
+
+      'point.1.title': { fr: 'Double compétence', en: 'Dual skillset' },
+      'point.1.desc': { fr: 'Développement frontend/back-end + support IT.', en: 'Frontend/backend development + IT support.' },
+      'point.2.title': { fr: 'Livraison fiable', en: 'Reliable delivery' },
+      'point.2.desc': { fr: 'Applications nettes, tests, documentation et suivi.', en: 'Clean apps, testing, docs and handover.' },
+      'point.3.title': { fr: 'Communication fluide', en: 'Clear communication' },
+      'point.3.desc': { fr: 'Clarté avec les recruteurs et collaboration en équipe.', en: 'Clear with recruiters and collaborative with teams.' },
+      'resume.link': { fr: 'LinkedIn', en: 'LinkedIn' },
+
+      'stat.exp': { fr: "Années d'expérience professionnelle", en: 'Years of professional experience' },
+      'stat.projects': { fr: 'Projets livrés et présentés', en: 'Projects delivered & presented' },
+      'stat.tools': { fr: 'Technologies et outils maîtrisés', en: 'Technologies & tools' },
+      'stat.langs': { fr: 'Langues parlées', en: 'Languages spoken' },
+      'search.placeholder': { fr: 'Rechercher sur le site…', en: 'Search the site…' },
+      'search.aria': { fr: 'Rechercher le site', en: 'Search the site' },
+      'search.hint': { fr: 'Essayez : React, Docker, Montréal, support', en: 'Try: React, Docker, Montréal, support' },
+
+      'about.eyebrow': { fr: 'À propos', en: 'About' },
+      'about.title': { fr: 'Qui je suis', en: 'Who I am' },
+      'about.p1': { fr: 'Je suis une développeuse web junior bilingue avec un AEC en Programmation Web et Mobile (Institut Teccart, Montréal). Je crée des applications web propres avec React.js, Node.js, ASP.NET MVC et des bases de données SQL.', en: 'I am a junior web developer, bilingual, with a diploma in Web & Mobile Programming (Institut Teccart, Montreal). I build clean web apps using React.js, Node.js, ASP.NET MVC and SQL databases.' },
+      'about.p2': { fr: "Je suis également technicienne IT avec de l'experience en support technique, dépannage Windows/Active Directory et gestion de tickets. Bilingue français-anglais, j'aime documenter, former et résoudre des problèmes dans des environnements rapides.", en: "I also work in IT support with experience in Windows/Active Directory troubleshooting and ticketing. Bilingual, I enjoy documenting, training and solving problems in fast-paced environments." },
+      'about.p3': { fr: "J'aime dessiner, apprendre vite et apporter de l'energie positive dans une equipe. Mon profil combine développement full-stack et support informatique.", en: 'I like drawing, learning fast and bringing positive energy to a team. My profile combines full-stack development and IT support.' },
+
+      'contact.title': { fr: 'Travaillons ensemble', en: 'Let’s work together' },
+      'contact.prompt': { fr: 'Vous avez une opportunité ou souhaitez en savoir plus sur mon profil ? Je suis disponible et je réponds rapidement.', en: 'Have an opportunity or want to learn more about my profile? I am available and respond quickly.' },
+      'contact.linkedin': { fr: 'LinkedIn', en: 'LinkedIn' },
+
+      /* Projects */
+      'project1.meta': { fr: 'Projet académique · 2025', en: 'Academic project · 2025' },
+      'project1.title': { fr: 'Health Management System', en: 'Health Management System' },
+      'project1.desc': { fr: "Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.", en: 'Complete patient management system with appointment booking, notifications and MVC architecture. SQL Server DB, UML documentation, REST APIs and user authentication.' },
+
+      'project2.meta': { fr: 'Projet académique · 2025', en: 'Academic project · 2025' },
+      'project2.title': { fr: 'VroomVroom — Plateforme de covoiturage', en: 'VroomVroom — Ridesharing platform' },
+      'project2.desc': { fr: "Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.", en: 'Responsive ridesharing app with real-time messaging, user authentication, Google Maps API integration and optimized MySQL database management.' },
+
+      /* Experience */
+      'exp1.title': { fr: 'Commis fruits et légumes', en: 'Produce clerk' },
+      'exp1.org': { fr: 'Metro Notre-Dame — Montréal, QC', en: 'Metro Notre-Dame — Montreal, QC' },
+      'exp1.date': { fr: 'Sep 2024 — Fév 2026', en: 'Sep 2024 — Feb 2026' },
+      'exp1.b1': { fr: 'Gestion des demandes clients et résolution proactive des problèmes.', en: 'Handled customer requests and proactively resolved issues.' },
+      'exp1.b2': { fr: 'Correction des écarts de caisse et production de rapports précis.', en: 'Reconciled cash discrepancies and produced accurate reports.' },
+      'exp1.b3': { fr: 'Formation des nouveaux employés sur les outils et procédures internes.', en: 'Trained new staff on internal tools and procedures.' },
+      'exp1.b4': { fr: 'Travail d\'équipe efficace en période très achalandée.', en: 'Worked effectively as part of a team during high-traffic periods.' },
+
+      'exp2.title': { fr: 'Développeuse Web Junior', en: 'Junior Web Developer' },
+      'exp2.org': { fr: 'Sitel Maroc', en: 'Sitel Morocco' },
+      'exp2.date': { fr: 'Mai 2022 — Août 2023', en: 'May 2022 — Aug 2023' },
+      'exp2.b1': { fr: 'Développement et maintenance de fonctionnalités web en PHP, JavaScript, HTML/CSS.', en: 'Developed and maintained web features using PHP, JavaScript, HTML/CSS.' },
+      'exp2.b2': { fr: 'Analyse des bogues, tests fonctionnels et optimisation de l\'expérience utilisateur.', en: 'Analyzed bugs, performed functional testing and optimized user experience.' },
+      'exp2.b3': { fr: 'Requêtes SQL pour extraire, corriger et valider les données métiers.', en: 'Wrote SQL queries to extract, correct and validate business data.' },
+      'exp2.b4': { fr: 'Participation aux sprints Agile et collaboration avec les équipes QA.', en: 'Participated in Agile sprints and collaborated with QA teams.' },
+
+      'exp3.title': { fr: 'Stagiaire en communication', en: 'Communication Intern' },
+      'exp3.org': { fr: 'Intelcia Morocco', en: 'Intelcia Morocco' },
+      'exp3.date': { fr: 'Juin 2021 — Août 2021', en: 'Jun 2021 — Aug 2021' },
+      'exp3.b1': { fr: 'Support technique par chat et courriel pour des utilisateurs internes.', en: 'Provided technical support via chat and email to internal users.' },
+      'exp3.b2': { fr: 'Rédaction de guides IT et documentation pour les équipes.', en: 'Authored IT guides and documentation for teams.' },
+      'exp3.b3': { fr: 'Routage des cas complexes vers les spécialistes appropriés.', en: 'Routed complex cases to the appropriate specialists.' },
+
+      'footer.copyright': { fr: '© 2026 Nossaiba El Asri — Montréal, Québec', en: '© 2026 Nossaiba El Asri — Montreal, QC' }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[key] && translations[key][lang]) {
+          el.innerHTML = translations[key][lang];
+        }
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (translations[key] && translations[key][lang]) {
+          el.placeholder = translations[key][lang];
+        }
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const key = el.dataset.i18nAria;
+        if (translations[key] && translations[key][lang]) {
+          el.setAttribute('aria-label', translations[key][lang]);
+        }
+      });
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      localStorage.setItem('site-lang', lang);
+      // Rebuild search index so results reflect the chosen language
+      if (typeof buildSearchIndex === 'function') buildSearchIndex();
+    }
+
+    // Orchestrated language switch with subtle cross-fade + slide
+    let _isLangSwitching = false;
+    function doLanguageSwitch(lang) {
+      const current = localStorage.getItem('site-lang') || 'fr';
+      if (lang === current || _isLangSwitching) return;
+      _isLangSwitching = true;
+      document.body.classList.add('lang-switching');
+      const hideMs = 260;
+      const unlockMs = 420;
+      // Wait for hide animation, swap text while hidden, then reveal
+      window.setTimeout(() => {
+        setLanguage(lang);
+        // ensure next frame to trigger transition on reveal
+        requestAnimationFrame(() => {
+          document.body.classList.remove('lang-switching');
+          // allow the reveal animation to finish before unlocking
+          window.setTimeout(() => { _isLangSwitching = false; }, unlockMs);
+        });
+      }, hideMs);
+    }
+
+    // Wire up language buttons to animated switch
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => doLanguageSwitch(btn.dataset.lang));
+    });
+
+    // Initialize language
+    const savedLang = localStorage.getItem('site-lang') || 'fr';
+    setLanguage(savedLang);
   </script>
 </body>
 </html>
