@@ -1,29 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nossaiba El Asri — Développeuse Web Full-Stack & Technicienne IT bilingue à Montréal. React.js, Angular, FastAPI, MongoDB, support technique." />
-  <meta name="author" content="Nossaiba El Asri" />
-  <meta name="theme-color" content="#6C3CE0" />
-  <title>Nossaiba El Asri — Développeuse Web & Technicienne IT</title>
-  <link rel="canonical" href="https://nossaiba-elas.github.io/Site-portfolio-personnel/" />
-  <meta name="keywords" content="Nossaiba El Asri, développeuse web, IT support, full-stack, React, Angular, FastAPI, MongoDB, Python, Montréal" />
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nossaiba El Asri — Développeuse Web & Technicienne IT" />
-  <meta property="og:description" content="Profil polyvalent IT — développement web, support, QA. Bilingue FR/EN. Disponible à Montréal." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/nossaiba-elas/Site-portfolio-personnel/main/IMG_4179.jpg" />
-  <meta property="og:url" content="https://nossaiba-elas.github.io/Site-portfolio-personnel/" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Nossaiba El Asri — Développeuse Web Full-Stack &amp; Technicienne IT bilingue à Montréal. React.js, Angular, FastAPI, MongoDB, support technique." name="description"/>
+<meta content="Nossaiba El Asri" name="author"/>
+<meta content="#6C3CE0" name="theme-color"/>
+<title>Nossaiba El Asri — Développeuse Web &amp; Technicienne IT</title>
+<link href="https://nossaiba-elas.github.io/Site-portfolio-personnel/" rel="canonical"/>
+<meta content="Nossaiba El Asri, développeuse web, IT support, full-stack, React, Angular, FastAPI, MongoDB, Python, Montréal" name="keywords"/>
+<!-- Open Graph / Social -->
+<meta content="website" property="og:type"/>
+<meta content="Nossaiba El Asri — Développeuse Web &amp; Technicienne IT" property="og:title"/>
+<meta content="Profil polyvalent IT — développement web, support, QA. Bilingue FR/EN. Disponible à Montréal." property="og:description"/>
+<meta content="https://raw.githubusercontent.com/nossaiba-elas/Site-portfolio-personnel/main/IMG_4179.jpg" property="og:image"/>
+<meta content="https://nossaiba-elas.github.io/Site-portfolio-personnel/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Nossaiba El Asri","url":"https://nossaiba-elas.github.io/Site-portfolio-personnel/","sameAs":["https://www.linkedin.com/in/nossaiba-el-asri-69114b217","https://github.com/nossaiba-elas"]}
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Syne:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --accent: #6C3CE0;
       --accent-light: #8B5CF6;
@@ -1158,517 +1158,557 @@
     }
 
 
-  </style>
+  
+
+    /* Responsive + language cleanup fixes */
+    img, video, canvas { max-width: 100%; height: auto; }
+    .project-card, .skill-group, .edu-item, .exp-item, .contact-wrap { overflow-wrap: anywhere; }
+
+    @media (max-width: 900px) {
+      nav .container {
+        height: 64px;
+        min-height: 64px;
+        gap: 0.6rem;
+        flex-wrap: nowrap;
+      }
+      .logo {
+        max-width: 52vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .menu-btn { display: block !important; order: 3; }
+      .lang-switch { order: 2; margin-left: auto; }
+      .nav-actions { display: none !important; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 1rem;
+        right: 1rem;
+        margin-left: 0;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        background: rgba(250,250,248,0.98);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 18px 45px rgba(16,24,40,0.12);
+        z-index: 500;
+      }
+      .nav-links.open { display: flex !important; }
+      .nav-links a {
+        display: block;
+        padding: 0.55rem 0.6rem;
+        border-radius: 10px;
+      }
+      .nav-links a:hover { background: rgba(108,60,224,0.08); }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 1.05rem; }
+      .hero { min-height: auto; padding-top: 70px; }
+      .hero-inner { grid-template-columns: 1fr !important; padding: 2rem 0; }
+      .hero h1 { font-size: clamp(2.35rem, 12vw, 3.4rem); }
+      .hero-title { font-size: 1rem; }
+      .hero-tagline { font-size: 0.95rem; }
+      .hero-panel { padding: 1.35rem; border-radius: 22px; }
+      .hero-pills { gap: 0.55rem; }
+      .pill { padding: 0.58rem 0.75rem; font-size: 0.8rem; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+      .stat { padding: 1rem; }
+      .section-title { font-size: clamp(1.6rem, 8vw, 2.1rem); }
+      .skills-grid { grid-template-columns: 1fr !important; }
+      #projets .projects-grid { grid-template-columns: 1fr !important; }
+      #projets .project-card { padding: 1.25rem; }
+      .exp-header { align-items: flex-start; }
+      .exp-date { white-space: normal; }
+      .course-tags, .tags, .project-tags { gap: 0.35rem; }
+      .contact-wrap { padding: 2rem 1rem; }
+      .modal { width: min(94vw, 760px); padding: 1rem; }
+    }
+
+    @media (max-width: 420px) {
+      .logo { max-width: 46vw; font-size: 0.88rem; }
+      .lang-btn { padding: 0.2rem 0.34rem; font-size: 0.74rem; }
+      .hero h1 { font-size: 2.15rem; }
+      .stats { grid-template-columns: 1fr; }
+      .project-actions { flex-direction: column; align-items: stretch; }
+      .project-actions .btn-sm { width: 100%; }
+      .contact-link { font-size: 0.82rem; padding: 0.6rem 0.75rem; }
+    }
+</style>
 </head>
 <body>
-  <a href="#apropos" class="skip-link">Aller au contenu</a>
-
-  <nav>
-    <div class="container">
-      <a href="#" class="logo">Nossaiba El Asri</a>
-      <div class="nav-search" role="search">
-        <input id="siteSearch" class="search-input" type="search" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria" placeholder="Rechercher ( / )" aria-label="Rechercher le site" />
-          <div id="searchResults" class="search-results" aria-hidden="true"></div>
-      </div>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
-        <li><a href="#competences" data-i18n="nav.skills">Compétences</a></li>
-        <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
-        <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
-        <li><a href="#formation" data-i18n="nav.education">Formation</a></li>
-        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-      </ul>
-      <div class="nav-actions" aria-hidden="false">
-        <a href="https://github.com/nossaiba-elas" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">GitHub</a>
-        <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">LinkedIn</a>
-      </div>
-      <div class="lang-switch" aria-hidden="false">
-        <button class="lang-btn active" data-lang="fr">FR</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Disponible pour un rôle junior ou support IT hybride</p>
-        <h1>Bonjour, je suis <em data-i18n="hero.name">Nossaiba El&nbsp;Asri</em></h1>
-        <p class="hero-title" data-i18n="hero.title">Développeuse Web Full-Stack &amp; Technicienne IT à Montréal</p>
-        <p class="hero-tagline" data-i18n="hero.tagline">
+<a class="skip-link" data-i18n="skip.content" href="#apropos">Aller au contenu</a>
+<nav>
+<div class="container">
+<a class="logo" href="#">Nossaiba El Asri</a>
+<div class="nav-search" role="search">
+<input aria-label="Rechercher le site" class="search-input" data-i18n-aria="search.aria" data-i18n-placeholder="search.placeholder" id="siteSearch" placeholder="Rechercher ( / )" type="search"/>
+<div aria-hidden="true" class="search-results" id="searchResults"></div>
+</div>
+<button aria-label="Menu" class="menu-btn" id="menuBtn">☰</button>
+<ul class="nav-links" id="navLinks">
+<li><a data-i18n="nav.about" href="#apropos">À propos</a></li>
+<li data-i18n="skills.eyebrow"><a data-i18n="nav.skills" href="#competences">Compétences</a></li>
+<li data-i18n="projects.title"><a data-i18n="nav.projects" href="#projets">Projets</a></li>
+<li><a data-i18n="nav.experience" href="#experience">Expérience</a></li>
+<li data-i18n="education.title"><a data-i18n="nav.education" href="#formation">Formation</a></li>
+<li data-i18n="contact.eyebrow"><a data-i18n="nav.contact" href="#contact">Contact</a></li>
+</ul>
+<div aria-hidden="false" class="nav-actions">
+<a aria-label="GitHub" class="icon-btn" data-i18n="btn.github" href="https://github.com/nossaiba-elas" rel="noopener" target="_blank">GitHub</a>
+<a aria-label="LinkedIn" class="icon-btn" href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" rel="noopener" target="_blank">LinkedIn</a>
+</div>
+<div aria-hidden="false" class="lang-switch">
+<button class="lang-btn active" data-lang="fr">FR</button>
+<button class="lang-btn" data-lang="en">EN</button>
+</div>
+</div>
+</nav>
+<!-- Hero -->
+<header class="hero">
+<div class="container hero-inner">
+<div class="hero-copy">
+<p class="hero-eyebrow" data-i18n="hero.eyebrow">Disponible pour un rôle junior ou support IT hybride</p>
+<h1><span data-i18n="hero.greeting">Bonjour, je suis</span> <em data-i18n="hero.name">Nossaiba El&nbsp;Asri</em></h1>
+<p class="hero-title" data-i18n="hero.title">Développeuse Web Full-Stack &amp; Technicienne IT à Montréal</p>
+<p class="hero-tagline" data-i18n="hero.tagline">
           J'aide les équipes à transformer les idées en interfaces claires, des applications performantes et des services support fiables. Bilingue français-anglais, j’allie développement moderne et résolution technique pour des résultats rapides. Je présente deux projets récents de 2025, et je peux partager d'autres réalisations sur demande.
         </p>
-
-        <div class="hero-pills">
-          <span class="pill" data-i18n="pill.hire">Profil prête à embaucher</span>
-          <span class="pill" data-i18n="pill.bilingual">Bilingue FR / EN</span>
-          <span class="pill" data-i18n="pill.support">Support &amp; Dev</span>
-          <span class="pill" data-i18n="pill.fastlearn">Apprentissage rapide</span>
-          <span class="pill" data-i18n="pill.agile">Agile / Scrum</span>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Contactez-moi</a>
-          <a href="#projets" class="btn btn-ghost">Voir mes projets</a>
-        </div>
-      </div>
-
-      <aside class="hero-panel">
-        <h3 data-i18n="hero.panel.title">Recruteurs, voici mes forces</h3>
-        <p data-i18n="hero.panel.p">
+<div class="hero-pills">
+<span class="pill" data-i18n="pill.hire">Profil prête à embaucher</span>
+<span class="pill" data-i18n="pill.bilingual">Bilingue FR / EN</span>
+<span class="pill" data-i18n="pill.support">Support &amp; Dev</span>
+<span class="pill" data-i18n="pill.fastlearn">Apprentissage rapide</span>
+<span class="pill" data-i18n="pill.agile">Agile / Scrum</span>
+</div>
+<div class="hero-actions">
+<a class="btn btn-primary" data-i18n="hero.cta.contact" href="#contact">Contactez-moi</a>
+<a class="btn btn-ghost" data-i18n="hero.cta.projects" href="#projets">Voir mes projets</a>
+</div>
+</div>
+<aside class="hero-panel">
+<h3 data-i18n="hero.panel.title">Recruteurs, voici mes forces</h3>
+<p data-i18n="hero.panel.p">
           Je propose un profil opérationnel capable de livrer du développement web robuste et d’assurer un support technique structuré dès le premier sprint. Curieuse et créative, j’apprends vite pour m’adapter à chaque équipe.
         </p>
-        <div class="hero-photo-wrapper">
-          <img src="IMG_4179.jpg" alt="Photo de Nossaiba El Asri" />
-        </div>
-        <div class="availability" style="background: rgba(108, 60, 224, 0.08); border-radius: 12px; padding: 0.85rem; margin: 1rem 0; text-align: center; font-weight: 600; font-size: 0.9rem;">
-          <span data-i18n="availability.now">✓ Disponible immédiatement</span>
-          <span> • </span>
-          <span data-i18n="availability.reloc">Flexible pour relocalisation</span>
-        </div>
-        <div class="hero-points">
-          <div class="hero-point">
-            <div class="hero-point-icon">01</div>
-            <div>
-              <strong data-i18n="point.1.title">Double compétence</strong>
-              <span data-i18n="point.1.desc">Développement frontend/back-end + support IT.</span>
-            </div>
-          </div>
-          <div class="hero-point">
-            <div class="hero-point-icon">02</div>
-            <div>
-              <strong data-i18n="point.2.title">Livraison fiable</strong>
-              <span data-i18n="point.2.desc">Applications nettes, tests, documentation et suivi.</span>
-            </div>
-          </div>
-          <div class="hero-point">
-            <div class="hero-point-icon">03</div>
-            <div>
-              <strong data-i18n="point.3.title">Communication fluide</strong>
-              <span data-i18n="point.3.desc">Clarté avec les recruteurs et collaboration en équipe.</span>
-            </div>
-          </div>
-        </div>
-        <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="resume-link"><span data-i18n="resume.link">LinkedIn</span></a>
-      </aside>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-num" data-target="3">0</div>
-        <div class="stat-label" data-i18n="stat.exp">Années d'expérience professionnelle</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-target="3">0</div>
-        <div class="stat-label" data-i18n="stat.projects">Projets présentés</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-target="18">0</div>
-        <div class="stat-label" data-i18n="stat.tools">Technologies et outils maîtrisés</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num" data-target="2">0</div>
-        <div class="stat-label" data-i18n="stat.langs">Langues parlées</div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="section-divider" />
-
-  <!-- À propos -->
-  <section id="apropos">
-    <div class="container">
-      <p class="section-eyebrow" data-i18n="about.eyebrow">À propos</p>
-      <h2 class="section-title" data-i18n="about.title">Qui je suis</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p data-i18n="about.p1">Je suis une développeuse web junior bilingue avec un AEC en Programmation Web et Mobile (Institut Teccart, Montréal). Je crée des applications web propres avec React.js, Node.js, ASP.NET MVC et des bases de données SQL.</p>
-          <p data-i18n="about.p2">Je suis également technicienne IT avec de l'expérience en support technique, dépannage Windows/Active Directory et gestion de tickets. Bilingue français-anglais, j'aime documenter, former et résoudre des problèmes dans des environnements rapides.</p>
-          <p data-i18n="about.p3">J'aime dessiner, apprendre vite et apporter de l'énergie positive dans une équipe. Mon profil combine développement full-stack et support informatique — une double compétence qui me permet de comprendre les systèmes en profondeur et d'accompagner efficacement les utilisateurs comme les équipes techniques.</p>
-        </div>
-        <div class="about-cards">
-          <div class="about-card">
-            <strong>AEC Programmation Web &amp; Mobile</strong>
-            <span>Institut Teccart — Diplômée</span>
-          </div>
-          <div class="about-card">
-            <strong>Technicienne IT</strong>
-            <span>Support Windows, Active Directory, tickets</span>
-          </div>
-          <div class="about-card">
-            <strong>Certification en cours</strong>
-            <span>Google IT Support Professional — Coursera</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <!-- Compétences -->
-  <section id="competences">
-    <div class="container">
-      <p class="section-eyebrow">Compétences</p>
-      <h2 class="section-title">Ce que je maîtrise</h2>
-      <div class="skills-grid">
-
-        <div class="skill-group">
-          <h3>Frontend</h3>
-          <div class="tags">
-            <span>React.js</span>
-            <span>Angular</span>
-            <span>React Native</span>
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript ES6+</span>
-            <span>Responsive Design</span>
-            <span>Bootstrap</span>
-            <span>UI/UX</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Backend</h3>
-          <div class="tags">
-            <span>ASP.NET MVC</span>
-            <span>C#</span>
-            <span>PHP</span>
-            <span>Laravel</span>
-            <span>Symphony</span>
-            <span>Node.js</span>
-            <span>Express</span>
-            <span>FastAPI</span>
-            <span>Flask</span>
-            <span>Python</span>
-            <span>REST APIs</span>
-            <span>JSON</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Bases de données</h3>
-          <div class="tags">
-            <span>SQL Server</span>
-            <span>MySQL</span>
-            <span>Oracle</span>
-            <span>MongoDB</span>
-            <span>Modélisation UML</span>
-            <span>Requêtes SQL</span>
-            <span>Conception BD</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Support IT &amp; Infrastructure</h3>
-          <div class="tags">
-            <span>Windows 10/11</span>
-            <span>Active Directory</span>
-            <span>Office 365</span>
-            <span>Google Workspace</span>
-            <span>ServiceNow</span>
-            <span>Jira</span>
-            <span>TCP/IP</span>
-            <span>DNS</span>
-            <span>DHCP</span>
-            <span>VPN</span>
-            <span>Wi-Fi</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Outils &amp; méthodes</h3>
-          <div class="tags">
-            <span>Git / GitHub</span>
-            <span>VS Code</span>
-            <span>Android Studio</span>
-            <span>VMware</span>
-            <span>Postman</span>
-            <span>AWS</span>
-            <span>Docker</span>
-            <span>Agile / Scrum</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Soft skills</h3>
-          <div class="tags">
-            <span>Bilingue FR / EN</span>
-            <span>Rapidité d'apprentissage</span>
-            <span>Bonne écoute</span>
-            <span>Écoute active</span>
-            <span>Adaptabilité</span>
-            <span>Créativité</span>
-            <span>Curiosité</span>
-            <span>Empathie</span>
-            <span>Travail d'équipe</span>
-            <span>Résolution de problèmes</span>
-            <span>Passion pour le dessin</span>
-          </div>
-        </div>
-
-        <div class="skill-group" style="background: rgba(108, 60, 224, 0.05); border-color: rgba(108, 60, 224, 0.2);">
-          <h3>Intérêts personnels</h3>
-          <div class="tags">
-            <span>Cuisine</span>
-            <span>Découverte de nouveaux lieux</span>
-            <span>Sports &amp; activités</span>
-            <span>Voyages &amp; aventures</span>
-            <span>Apprentissage continu</span>
-            <span>Travail en équipe inclusive</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <!-- Projets -->
-  <section id="projets">
-    <div class="container">
-      <p class="section-eyebrow">Portfolio</p>
-      <h2 class="section-title">Projets</h2>
-      <p class="section-description">Voici trois projets sélectionnés, dont un projet full-stack académique publié sur GitHub et deux autres projets développés pendant ma formation.</p>
-      <div class="projects-grid">
-        <article class="project-card featured-project" data-project="project0">
-          <p class="project-meta" data-i18n="project0.meta">Projet académique individuel · 2026</p>
-          <h3 data-i18n="project0.title">User Management System – Full-Stack CRUD Application</h3>
-          <p class="project-summary" data-i18n="project0.desc">Application Full-Stack CRUD permettant de gérer des profils utilisateurs à travers une API REST FastAPI et une base de données MongoDB. Le projet inclut trois interfaces frontend : React, Angular et HTML/CSS/JavaScript.</p>
-          <div class="project-tags" aria-hidden="false">
-            <span>React</span>
-            <span>Angular</span>
-            <span>JavaScript</span>
-            <span>FastAPI</span>
-            <span>Python</span>
-            <span>MongoDB</span>
-            <span>REST API</span>
-          </div>
-          <div class="project-note" data-i18n="project0.note">Code source et README disponibles sur GitHub</div>
-          <div class="project-actions">
-            <button class="btn-sm btn-outline" data-project-open="project0" data-i18n="project.btn.details">Voir détails</button>
-            <a class="btn-sm btn-primary-sm project-link" href="https://github.com/nossaiba-elas/user-management-system" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <div class="project-detail" aria-hidden="true">
-            <strong data-i18n="project.context">Contexte :</strong>
-            <span data-i18n="project0.context">Projet académique développé individuellement pour pratiquer l'intégration frontend/backend et la consommation d'une API REST avec plusieurs technologies frontend.</span>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="project1">
-          <p class="project-meta" data-i18n="project1.meta">Projet académique · 2025</p>
-          <h3 data-i18n="project1.title">Health Management System</h3>
-          <p class="project-summary" data-i18n="project1.desc">Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.</p>
-          <div class="project-tags" aria-hidden="false">
-            <span>ASP.NET MVC</span>
-            <span>C#</span>
-            <span>SQL Server</span>
-            <span>REST API</span>
-            <span>UML</span>
-            <span>Auth</span>
-          </div>
-          <div class="project-note" data-i18n="project.docRequest">Documentation disponible sur demande</div>
-          <div class="project-actions">
-            <button class="btn-sm btn-outline" data-project-open="project1" data-i18n="project.btn.details">Voir détails</button>
-          </div>
-          <div class="project-detail" aria-hidden="true">
-            <strong data-i18n="project.context">Contexte :</strong>
-            <span data-i18n="project1.context">Projet académique pour simuler la gestion d'un centre de soins primaires, axé sur la robustesse et la documentation.</span>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="project2">
-          <p class="project-meta" data-i18n="project2.meta">Projet académique · 2025</p>
-          <h3 data-i18n="project2.title">VroomVroom — Plateforme de covoiturage</h3>
-          <p class="project-summary" data-i18n="project2.desc">Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.</p>
-          <div class="project-tags">
-            <span>React.js</span>
-            <span>HTML / CSS / JS</span>
-            <span>FastAPI</span>
-            <span>MySQL</span>
-            <span>Google Maps API</span>
-          </div>
-          <div class="project-note" data-i18n="project.docRequest">Documentation disponible sur demande</div>
-          <div class="project-actions">
-            <button class="btn-sm btn-outline" data-project-open="project2" data-i18n="project.btn.details">Voir détails</button>
-          </div>
-          <div class="project-detail" aria-hidden="true">
-            <strong data-i18n="project.context">Contexte :</strong>
-            <span data-i18n="project2.context">Projet de plateforme de covoiturage académique, axé sur l'expérience utilisateur mobile et l'intégration d'APIs externes.</span>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Project details modal -->
-      <div id="projectModalBackdrop" class="modal-backdrop" aria-hidden="true">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
-          <button id="projectModalClose" class="btn-sm btn-outline" style="float:right;">✕</button>
-          <h3 id="projectModalTitle">Titre du projet</h3>
-          <div id="projectModalBody" class="modal-sections">
-            <!-- Filled by JS -->
-          </div>
-          <div class="modal-actions">
-            <a id="modalDocLink" class="btn-sm btn-outline" target="_blank" rel="noopener" href="#">Documentation</a>
-            <a id="modalReportLink" class="btn-sm btn-outline" target="_blank" rel="noopener" href="#">Rapport</a>
-            <button id="modalCloseBtn" class="btn-sm btn-primary-sm">Fermer</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <!-- Expérience -->
-  <section id="experience">
-    <div class="container">
-      <p class="section-eyebrow">Parcours</p>
-      <h2 class="section-title">Expérience professionnelle</h2>
-      <div class="exp-list">
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <div>
-              <h3 data-i18n="exp1.title">Agent de support technique</h3>
-              <p class="exp-org" data-i18n="exp1.org">Sitel Morocco</p>
-            </div>
-            <span class="exp-date" data-i18n="exp1.date">Mai 2022 — Août 2023</span>
-          </div>
-          <ul class="exp-bullets">
-            <li data-i18n="exp1.b1">Réponse aux demandes des clients par chat et par email tout en maintenant des standards de service professionnels.</li>
-            <li data-i18n="exp1.b2">Mise à jour des informations clients et maintien de dossiers précis.</li>
-            <li data-i18n="exp1.b3">Escalade des problèmes techniques et clients complexes selon les procédures établies.</li>
-            <li data-i18n="exp1.b4">Communication efficace avec les équipes internes afin d’assurer une résolution rapide des problèmes.</li>
-          </ul>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <div>
-              <h3 data-i18n="exp2.title">Commis fruits et légumes</h3>
-              <p class="exp-org" data-i18n="exp2.org">Metro Notre-Dame — Montréal, QC</p>
-            </div>
-            <span class="exp-date" data-i18n="exp2.date">Sep 2024 — Fév 2026</span>
-          </div>
-          <ul class="exp-bullets">
-            <li data-i18n="exp2.b1">Gestion des demandes clients et résolution proactive des problèmes.</li>
-            <li data-i18n="exp2.b2">Correction des écarts de caisse et production de rapports précis.</li>
-            <li data-i18n="exp2.b3">Formation des nouveaux employés sur les outils et procédures internes.</li>
-            <li data-i18n="exp2.b4">Travail d'équipe efficace en période très achalandée.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <!-- Formation -->
-  <section id="formation">
-    <div class="container">
-      <p class="section-eyebrow">Études</p>
-      <h2 class="section-title">Formation</h2>
-      <div class="edu-timeline">
-
-        <div class="edu-item primary">
-          <span class="edu-badge badge-done">Diplômée</span>
-          <h3>AEC — Programmation Web et Mobile</h3>
-          <p class="edu-school">Institut Teccart — Montréal, QC</p>
-          <p class="edu-period">2023 — 2026</p>
-          <div class="course-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript ES6+</span>
-            <span>React.js</span>
-            <span>Angular</span>
-            <span>Node.js</span>
-            <span>Express</span>
-            <span>PHP</span>
-            <span>Laravel</span>
-            <span>Symphony</span>
-            <span>ASP.NET MVC</span>
-            <span>C#</span>
-            <span>Java</span>
-            <span>Kotlin</span>
-            <span>Python</span>
-            <span>FastAPI</span>
-            <span>Flask</span>
-            <span>SQL Server</span>
-            <span>MySQL</span>
-            <span>Oracle</span>
-            <span>MongoDB</span>
-            <span>Modélisation UML</span>
-            <span>Git / GitHub</span>
-            <span>Postman</span>
-            <span>AWS</span>
-            <span>Windows Administration</span>
-            <span>TCP/IP</span>
-            <span>DNS</span>
-            <span>DHCP</span>
-            <span>VPN</span>
-            <span>Sécurité informatique</span>
-            <span>Gestion de projet</span>
-          </div>
-        </div>
-
-        <div class="edu-item">
-          <span class="edu-badge badge-done">Complété</span>
-          <h3>Études en Génie Informatique</h3>
-          <p class="edu-school">École Supérieure de Technologie (EST) — Maroc</p>
-          <p class="edu-period">2022 — 2023</p>
-        </div>
-
-        <div class="edu-item">
-          <span class="edu-badge badge-progress">En cours</span>
-          <h3>Google IT Support Professional Certificate</h3>
-          <p class="edu-school">Coursera — Google</p>
-          <p class="edu-period">Certification en cours de complétion</p>
-          <div class="course-tags">
-            <span>Troubleshooting</span>
-            <span>Networking</span>
-            <span>Operating Systems</span>
-            <span>Technical Problem Solving</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <p class="section-eyebrow">Contact</p>
-      <h2 class="section-title" data-i18n="contact.title">Travaillons ensemble</h2>
-      <div class="contact-wrap">
-        <p data-i18n="contact.prompt">Vous avez une opportunité ou souhaitez en savoir plus sur mon profil ? Je suis disponible et je réponds rapidement.</p>
-        <div class="contact-links">
-          <a href="mailto:elasrinossaiba@gmail.com" class="contact-link">✉ elasrinossaiba@gmail.com</a>
-          <a href="tel:+14384702805" class="contact-link">📞 438-470-2805</a>
-          <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="contact-link"><span data-i18n="contact.linkedin">LinkedIn</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p data-i18n="footer.copyright">© 2026 Nossaiba El Asri — Montréal, Québec</p>
-    </div>
-  </footer>
-
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
-
-  <script>
+<div class="hero-photo-wrapper">
+<img alt="Photo de Nossaiba El Asri" src="IMG_4179.jpg"/>
+</div>
+<div class="availability" style="background: rgba(108, 60, 224, 0.08); border-radius: 12px; padding: 0.85rem; margin: 1rem 0; text-align: center; font-weight: 600; font-size: 0.9rem;">
+<span data-i18n="availability.now">✓ Disponible immédiatement</span>
+<span> • </span>
+<span data-i18n="availability.reloc">Flexible pour relocalisation</span>
+</div>
+<div class="hero-points">
+<div class="hero-point">
+<div class="hero-point-icon">01</div>
+<div>
+<strong data-i18n="point.1.title">Double compétence</strong>
+<span data-i18n="point.1.desc">Développement frontend/back-end + support IT.</span>
+</div>
+</div>
+<div class="hero-point">
+<div class="hero-point-icon">02</div>
+<div>
+<strong data-i18n="point.2.title">Livraison fiable</strong>
+<span data-i18n="point.2.desc">Applications nettes, tests, documentation et suivi.</span>
+</div>
+</div>
+<div class="hero-point">
+<div class="hero-point-icon">03</div>
+<div>
+<strong data-i18n="point.3.title">Communication fluide</strong>
+<span data-i18n="point.3.desc">Clarté avec les recruteurs et collaboration en équipe.</span>
+</div>
+</div>
+</div>
+<a class="resume-link" href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" rel="noopener" target="_blank"><span data-i18n="resume.link">LinkedIn</span></a>
+</aside>
+</div>
+</header>
+<div class="container">
+<div class="stats">
+<div class="stat">
+<div class="stat-num" data-target="3">0</div>
+<div class="stat-label" data-i18n="stat.exp">Années d'expérience professionnelle</div>
+</div>
+<div class="stat">
+<div class="stat-num" data-target="3">0</div>
+<div class="stat-label" data-i18n="stat.projects">Projets présentés</div>
+</div>
+<div class="stat">
+<div class="stat-num" data-target="18">0</div>
+<div class="stat-label" data-i18n="stat.tools">Technologies et outils maîtrisés</div>
+</div>
+<div class="stat">
+<div class="stat-num" data-target="2">0</div>
+<div class="stat-label" data-i18n="stat.langs">Langues parlées</div>
+</div>
+</div>
+</div>
+<hr class="section-divider"/>
+<!-- À propos -->
+<section id="apropos">
+<div class="container">
+<p class="section-eyebrow" data-i18n="about.eyebrow">À propos</p>
+<h2 class="section-title" data-i18n="about.title">Qui je suis</h2>
+<div class="about-grid">
+<div class="about-text">
+<p data-i18n="about.p1">Je suis une développeuse web junior bilingue avec un AEC en Programmation Web et Mobile (Institut Teccart, Montréal). Je crée des applications web propres avec React.js, Node.js, ASP.NET MVC et des bases de données SQL.</p>
+<p data-i18n="about.p2">Je suis également technicienne IT avec de l'expérience en support technique, dépannage Windows/Active Directory et gestion de tickets. Bilingue français-anglais, j'aime documenter, former et résoudre des problèmes dans des environnements rapides.</p>
+<p data-i18n="about.p3">J'aime dessiner, apprendre vite et apporter de l'énergie positive dans une équipe. Mon profil combine développement full-stack et support informatique — une double compétence qui me permet de comprendre les systèmes en profondeur et d'accompagner efficacement les utilisateurs comme les équipes techniques.</p>
+</div>
+<div class="about-cards">
+<div class="about-card">
+<strong data-i18n="about.card1.title">AEC Programmation Web &amp; Mobile</strong>
+<span data-i18n="about.card1.desc">Institut Teccart — Diplômée</span>
+</div>
+<div class="about-card">
+<strong data-i18n="about.card3.title">Technicienne IT</strong>
+<span data-i18n="about.card3.desc">Support Windows, Active Directory, tickets</span>
+</div>
+<div class="about-card">
+<strong data-i18n="about.card4.title">Certification en cours</strong>
+<span data-i18n="about.card4.desc">Google IT Support Professional — Coursera</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<!-- Compétences -->
+<section id="competences">
+<div class="container">
+<p class="section-eyebrow" data-i18n="skills.eyebrow">Compétences</p>
+<h2 class="section-title" data-i18n="skills.title">Ce que je maîtrise</h2>
+<div class="skills-grid">
+<div class="skill-group">
+<h3 data-i18n="skills.frontend">Frontend</h3>
+<div class="tags">
+<span>React.js</span>
+<span>Angular</span>
+<span>React Native</span>
+<span>HTML5</span>
+<span>CSS3</span>
+<span>JavaScript ES6+</span>
+<span>Responsive Design</span>
+<span>Bootstrap</span>
+<span>UI/UX</span>
+</div>
+</div>
+<div class="skill-group">
+<h3 data-i18n="skills.backend">Backend</h3>
+<div class="tags">
+<span>ASP.NET MVC</span>
+<span>C#</span>
+<span>PHP</span>
+<span>Laravel</span>
+<span>Symphony</span>
+<span>Node.js</span>
+<span>Express</span>
+<span>FastAPI</span>
+<span>Flask</span>
+<span>Python</span>
+<span>REST APIs</span>
+<span>JSON</span>
+</div>
+</div>
+<div class="skill-group">
+<h3 data-i18n="skills.databases">Bases de données</h3>
+<div class="tags">
+<span>SQL Server</span>
+<span>MySQL</span>
+<span>Oracle</span>
+<span>MongoDB</span>
+<span data-i18n="skill.uml">Modélisation UML</span>
+<span data-i18n="skill.sql.queries">Requêtes SQL</span>
+<span data-i18n="skill.db.design">Conception BD</span>
+</div>
+</div>
+<div class="skill-group">
+<h3 data-i18n="skills.support">Support IT &amp; Infrastructure</h3>
+<div class="tags">
+<span>Windows 10/11</span>
+<span>Active Directory</span>
+<span>Office 365</span>
+<span>Google Workspace</span>
+<span>ServiceNow</span>
+<span>Jira</span>
+<span>TCP/IP</span>
+<span>DNS</span>
+<span>DHCP</span>
+<span>VPN</span>
+<span>Wi-Fi</span>
+</div>
+</div>
+<div class="skill-group">
+<h3 data-i18n="skills.tools">Outils &amp; méthodes</h3>
+<div class="tags">
+<span>Git / GitHub</span>
+<span>VS Code</span>
+<span>Android Studio</span>
+<span>VMware</span>
+<span>Postman</span>
+<span>AWS</span>
+<span>Docker</span>
+<span>Agile / Scrum</span>
+</div>
+</div>
+<div class="skill-group">
+<h3 data-i18n="skills.soft">Soft skills</h3>
+<div class="tags">
+<span data-i18n="skill.bilingual">Bilingue FR / EN</span>
+<span data-i18n="skill.fastlearning">Rapidité d'apprentissage</span>
+<span data-i18n="skill.goodlistening">Bonne écoute</span>
+<span data-i18n="skill.activelistening">Écoute active</span>
+<span data-i18n="skill.adaptability">Adaptabilité</span>
+<span data-i18n="skill.creativity">Créativité</span>
+<span data-i18n="skill.curiosity">Curiosité</span>
+<span data-i18n="skill.empathy">Empathie</span>
+<span data-i18n="skill.teamwork">Travail d'équipe</span>
+<span data-i18n="skill.problem.solving">Résolution de problèmes</span>
+<span data-i18n="skill.drawing">Passion pour le dessin</span>
+</div>
+</div>
+<div class="skill-group" style="background: rgba(108, 60, 224, 0.05); border-color: rgba(108, 60, 224, 0.2);">
+<h3 data-i18n="skills.interests">Intérêts personnels</h3>
+<div class="tags">
+<span data-i18n="interest.cooking">Cuisine</span>
+<span data-i18n="interest.places">Découverte de nouveaux lieux</span>
+<span data-i18n="interest.sports">Sports &amp; activités</span>
+<span data-i18n="interest.travel">Voyages &amp; aventures</span>
+<span data-i18n="interest.learning">Apprentissage continu</span>
+<span data-i18n="interest.inclusive">Travail en équipe inclusive</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<!-- Projets -->
+<section id="projets">
+<div class="container">
+<p class="section-eyebrow" data-i18n="projects.eyebrow">Portfolio</p>
+<h2 class="section-title" data-i18n="projects.title">Projets</h2>
+<p class="section-description" data-i18n="projects.desc">Voici trois projets sélectionnés, dont un projet full-stack académique publié sur GitHub et deux autres projets développés pendant ma formation.</p>
+<div class="projects-grid">
+<article class="project-card featured-project" data-project="project0">
+<p class="project-meta" data-i18n="project0.meta">Projet académique individuel · 2026</p>
+<h3 data-i18n="project0.title">User Management System – Full-Stack CRUD Application</h3>
+<p class="project-summary" data-i18n="project0.desc">Application Full-Stack CRUD permettant de gérer des profils utilisateurs à travers une API REST FastAPI et une base de données MongoDB. Le projet inclut trois interfaces frontend : React, Angular et HTML/CSS/JavaScript.</p>
+<div aria-hidden="false" class="project-tags">
+<span>React</span>
+<span>Angular</span>
+<span>JavaScript</span>
+<span>FastAPI</span>
+<span>Python</span>
+<span>MongoDB</span>
+<span>REST API</span>
+</div>
+<div class="project-note" data-i18n="project0.note">Code source et README disponibles sur GitHub</div>
+<div class="project-actions">
+<button class="btn-sm btn-outline" data-i18n="project.btn.details" data-project-open="project0">Voir détails</button>
+<a class="btn-sm btn-primary-sm project-link" data-i18n="btn.github" href="https://github.com/nossaiba-elas/user-management-system" rel="noopener" target="_blank">GitHub</a>
+</div>
+<div aria-hidden="true" class="project-detail">
+<strong data-i18n="project.context">Contexte :</strong>
+<span data-i18n="project0.context">Projet académique développé individuellement pour pratiquer l'intégration frontend/backend et la consommation d'une API REST avec plusieurs technologies frontend.</span>
+</div>
+</article>
+<article class="project-card" data-project="project1">
+<p class="project-meta" data-i18n="project1.meta">Projet académique · 2025</p>
+<h3 data-i18n="project1.title">Health Management System</h3>
+<p class="project-summary" data-i18n="project1.desc">Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.</p>
+<div aria-hidden="false" class="project-tags">
+<span>ASP.NET MVC</span>
+<span>C#</span>
+<span>SQL Server</span>
+<span>REST API</span>
+<span>UML</span>
+<span>Auth</span>
+</div>
+<div class="project-note" data-i18n="project.docRequest">Documentation disponible sur demande</div>
+<div class="project-actions">
+<button class="btn-sm btn-outline" data-i18n="project.btn.details" data-project-open="project1">Voir détails</button>
+</div>
+<div aria-hidden="true" class="project-detail">
+<strong data-i18n="project.context">Contexte :</strong>
+<span data-i18n="project1.context">Projet académique pour simuler la gestion d'un centre de soins primaires, axé sur la robustesse et la documentation.</span>
+</div>
+</article>
+<article class="project-card" data-project="project2">
+<p class="project-meta" data-i18n="project2.meta">Projet académique · 2025</p>
+<h3 data-i18n="project2.title">VroomVroom — Plateforme de covoiturage</h3>
+<p class="project-summary" data-i18n="project2.desc">Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.</p>
+<div class="project-tags">
+<span>React.js</span>
+<span>HTML / CSS / JS</span>
+<span>FastAPI</span>
+<span>MySQL</span>
+<span>Google Maps API</span>
+</div>
+<div class="project-note" data-i18n="project.docRequest">Documentation disponible sur demande</div>
+<div class="project-actions">
+<button class="btn-sm btn-outline" data-i18n="project.btn.details" data-project-open="project2">Voir détails</button>
+</div>
+<div aria-hidden="true" class="project-detail">
+<strong data-i18n="project.context">Contexte :</strong>
+<span data-i18n="project2.context">Projet de plateforme de covoiturage académique, axé sur l'expérience utilisateur mobile et l'intégration d'APIs externes.</span>
+</div>
+</article>
+</div>
+<!-- Project details modal -->
+<div aria-hidden="true" class="modal-backdrop" id="projectModalBackdrop">
+<div aria-labelledby="projectModalTitle" aria-modal="true" class="modal" role="dialog">
+<button class="btn-sm btn-outline" data-i18n="modal.close.icon" id="projectModalClose" style="float:right;">✕</button>
+<h3 data-i18n="modal.title.default" id="projectModalTitle">Titre du projet</h3>
+<div class="modal-sections" id="projectModalBody">
+<!-- Filled by JS -->
+</div>
+<div class="modal-actions">
+<a class="btn-sm btn-outline" data-i18n="project.btn.doc" href="#" id="modalDocLink" rel="noopener" target="_blank">Documentation</a>
+<a class="btn-sm btn-outline" data-i18n="project.btn.report" href="#" id="modalReportLink" rel="noopener" target="_blank">Rapport</a>
+<button class="btn-sm btn-primary-sm" data-i18n="modal.close" id="modalCloseBtn">Fermer</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<!-- Expérience -->
+<section id="experience">
+<div class="container">
+<p class="section-eyebrow" data-i18n="experience.eyebrow">Parcours</p>
+<h2 class="section-title" data-i18n="experience.title">Expérience professionnelle</h2>
+<div class="exp-list">
+<div class="exp-item">
+<div class="exp-header">
+<div>
+<h3 data-i18n="exp1.title">Agent de support technique</h3>
+<p class="exp-org" data-i18n="exp1.org">Sitel Morocco</p>
+</div>
+<span class="exp-date" data-i18n="exp1.date">Mai 2022 — Août 2023</span>
+</div>
+<ul class="exp-bullets">
+<li data-i18n="exp1.b1">Réponse aux demandes des clients par chat et par email tout en maintenant des standards de service professionnels.</li>
+<li data-i18n="exp1.b2">Mise à jour des informations clients et maintien de dossiers précis.</li>
+<li data-i18n="exp1.b3">Escalade des problèmes techniques et clients complexes selon les procédures établies.</li>
+<li data-i18n="exp1.b4">Communication efficace avec les équipes internes afin d’assurer une résolution rapide des problèmes.</li>
+</ul>
+</div>
+<div class="exp-item">
+<div class="exp-header">
+<div>
+<h3 data-i18n="exp2.title">Commis fruits et légumes</h3>
+<p class="exp-org" data-i18n="exp2.org">Metro Notre-Dame — Montréal, QC</p>
+</div>
+<span class="exp-date" data-i18n="exp2.date">Sep 2024 — Fév 2026</span>
+</div>
+<ul class="exp-bullets">
+<li data-i18n="exp2.b1">Gestion des demandes clients et résolution proactive des problèmes.</li>
+<li data-i18n="exp2.b2">Correction des écarts de caisse et production de rapports précis.</li>
+<li data-i18n="exp2.b3">Formation des nouveaux employés sur les outils et procédures internes.</li>
+<li data-i18n="exp2.b4">Travail d'équipe efficace en période très achalandée.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<!-- Formation -->
+<section id="formation">
+<div class="container">
+<p class="section-eyebrow" data-i18n="education.eyebrow">Études</p>
+<h2 class="section-title" data-i18n="education.title">Formation</h2>
+<div class="edu-timeline">
+<div class="edu-item primary">
+<span class="edu-badge badge-done" data-i18n="education.badge.done.f">Diplômée</span>
+<h3 data-i18n="education.aec.title">AEC — Programmation Web et Mobile</h3>
+<p class="edu-school" data-i18n="education.aec.school">Institut Teccart — Montréal, QC</p>
+<p class="edu-period">2023 — 2026</p>
+<div class="course-tags">
+<span>HTML5</span>
+<span>CSS3</span>
+<span>JavaScript ES6+</span>
+<span>React.js</span>
+<span>Angular</span>
+<span>Node.js</span>
+<span>Express</span>
+<span>PHP</span>
+<span>Laravel</span>
+<span>Symphony</span>
+<span>ASP.NET MVC</span>
+<span>C#</span>
+<span>Java</span>
+<span>Kotlin</span>
+<span>Python</span>
+<span>FastAPI</span>
+<span>Flask</span>
+<span>SQL Server</span>
+<span>MySQL</span>
+<span>Oracle</span>
+<span>MongoDB</span>
+<span data-i18n="skill.uml">Modélisation UML</span>
+<span>Git / GitHub</span>
+<span>Postman</span>
+<span>AWS</span>
+<span>Windows Administration</span>
+<span>TCP/IP</span>
+<span>DNS</span>
+<span>DHCP</span>
+<span>VPN</span>
+<span data-i18n="skill.cybersecurity">Sécurité informatique</span>
+<span data-i18n="skill.project.management">Gestion de projet</span>
+</div>
+</div>
+<div class="edu-item">
+<span class="edu-badge badge-done" data-i18n="education.badge.completed">Complété</span>
+<h3 data-i18n="education.cs.title">Études en Génie Informatique</h3>
+<p class="edu-school" data-i18n="education.cs.school">École Supérieure de Technologie (EST) — Maroc</p>
+<p class="edu-period">2022 — 2023</p>
+</div>
+<div class="edu-item">
+<span class="edu-badge badge-progress" data-i18n="education.badge.progress">En cours</span>
+<h3>Google IT Support Professional Certificate</h3>
+<p class="edu-school">Coursera — Google</p>
+<p class="edu-period" data-i18n="education.google.period">Certification en cours de complétion</p>
+<div class="course-tags">
+<span>Troubleshooting</span>
+<span>Networking</span>
+<span>Operating Systems</span>
+<span>Technical Problem Solving</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="section-divider"/>
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<p class="section-eyebrow" data-i18n="contact.eyebrow">Contact</p>
+<h2 class="section-title" data-i18n="contact.title">Travaillons ensemble</h2>
+<div class="contact-wrap">
+<p data-i18n="contact.prompt">Vous avez une opportunité ou souhaitez en savoir plus sur mon profil ? Je suis disponible et je réponds rapidement.</p>
+<div class="contact-links">
+<a class="contact-link" href="mailto:elasrinossaiba@gmail.com">✉ elasrinossaiba@gmail.com</a>
+<a class="contact-link" href="tel:+14384702805">📞 438-470-2805</a>
+<a class="contact-link" href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" rel="noopener" target="_blank"><span data-i18n="contact.linkedin">LinkedIn</span></a>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<p data-i18n="footer.copyright">© 2026 Nossaiba El Asri — Montréal, Québec</p>
+</div>
+</footer>
+<button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
+<script>
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => {
@@ -1854,6 +1894,7 @@
       'nav.contact': { fr: 'Contact', en: 'Contact' },
 
       'hero.eyebrow': { fr: 'Disponible pour un rôle junior ou support IT hybride', en: 'Available for junior or hybrid IT support roles' },
+      'hero.greeting': { fr: 'Bonjour, je suis', en: 'Hello, I’m' },
       'hero.name': { fr: 'Nossaiba El\u00A0Asri', en: 'Nossaiba El\u00A0Asri' },
       'hero.title': { fr: 'Développeuse Web Full-Stack &amp; Technicienne IT à Montréal', en: 'Full-Stack Web Developer &amp; IT Technician in Montreal' },
       'hero.tagline': { fr: "J'aide les équipes à transformer les idées en interfaces claires, des applications performantes et des services support fiables. Bilingue français-anglais, j\u2019allie développement moderne et résolution technique pour des résultats rapides.", en: 'I help teams turn ideas into clear interfaces, performant apps and reliable support services. Bilingual French-English; I combine modern development and technical troubleshooting for fast results.' },
@@ -1946,6 +1987,66 @@
       'exp2.b2': { fr: 'Correction des écarts de caisse et production de rapports précis.', en: 'Reconciled cash discrepancies and produced accurate reports.' },
       'exp2.b3': { fr: 'Formation des nouveaux employés sur les outils et procédures internes.', en: 'Trained new staff on internal tools and procedures.' },
       'exp2.b4': { fr: 'Travail d\'équipe efficace en période très achalandée.', en: 'Worked effectively as part of a team during high-traffic periods.' },
+      'skip.content': { fr: 'Aller au contenu', en: 'Skip to content' },
+      'hero.cta.contact': { fr: 'Contactez-moi', en: 'Contact me' },
+      'hero.cta.projects': { fr: 'Voir mes projets', en: 'View my projects' },
+      'about.card1.title': { fr: 'AEC Programmation Web & Mobile', en: 'AEC — Web & Mobile Programming' },
+      'about.card1.desc': { fr: 'Institut Teccart — Diplômée', en: 'Institut Teccart — Graduate' },
+      'about.card3.title': { fr: 'Technicienne IT', en: 'IT Technician' },
+      'about.card3.desc': { fr: 'Support Windows, Active Directory, tickets', en: 'Windows support, Active Directory, ticketing' },
+      'about.card4.title': { fr: 'Certification en cours', en: 'Certification in progress' },
+      'about.card4.desc': { fr: 'Google IT Support Professional — Coursera', en: 'Google IT Support Professional — Coursera' },
+      'skills.eyebrow': { fr: 'Compétences', en: 'Skills' },
+      'skills.title': { fr: 'Ce que je maîtrise', en: 'What I can do' },
+      'skills.frontend': { fr: 'Frontend', en: 'Frontend' },
+      'skills.backend': { fr: 'Backend', en: 'Backend' },
+      'skills.databases': { fr: 'Bases de données', en: 'Databases' },
+      'skill.uml': { fr: 'Modélisation UML', en: 'UML modeling' },
+      'skill.sql.queries': { fr: 'Requêtes SQL', en: 'SQL queries' },
+      'skill.db.design': { fr: 'Conception BD', en: 'Database design' },
+      'skills.support': { fr: 'Support IT & Infrastructure', en: 'IT Support & Infrastructure' },
+      'skills.tools': { fr: 'Outils & méthodes', en: 'Tools & methods' },
+      'skills.soft': { fr: 'Soft skills', en: 'Soft skills' },
+      'skill.bilingual': { fr: 'Bilingue FR / EN', en: 'Bilingual FR / EN' },
+      'skill.fastlearning': { fr: 'Rapidité d\'apprentissage', en: 'Fast learning' },
+      'skill.goodlistening': { fr: 'Bonne écoute', en: 'Good listening' },
+      'skill.activelistening': { fr: 'Écoute active', en: 'Active listening' },
+      'skill.adaptability': { fr: 'Adaptabilité', en: 'Adaptability' },
+      'skill.creativity': { fr: 'Créativité', en: 'Creativity' },
+      'skill.curiosity': { fr: 'Curiosité', en: 'Curiosity' },
+      'skill.empathy': { fr: 'Empathie', en: 'Empathy' },
+      'skill.teamwork': { fr: 'Travail d\'équipe', en: 'Teamwork' },
+      'skill.problem.solving': { fr: 'Résolution de problèmes', en: 'Problem solving' },
+      'skill.drawing': { fr: 'Passion pour le dessin', en: 'Passion for drawing' },
+      'skills.interests': { fr: 'Intérêts personnels', en: 'Personal interests' },
+      'interest.cooking': { fr: 'Cuisine', en: 'Cooking' },
+      'interest.places': { fr: 'Découverte de nouveaux lieux', en: 'Exploring new places' },
+      'interest.sports': { fr: 'Sports & activités', en: 'Sports & activities' },
+      'interest.travel': { fr: 'Voyages & aventures', en: 'Travel & adventures' },
+      'interest.learning': { fr: 'Apprentissage continu', en: 'Continuous learning' },
+      'interest.inclusive': { fr: 'Travail en équipe inclusive', en: 'Inclusive teamwork' },
+      'projects.eyebrow': { fr: 'Portfolio', en: 'Portfolio' },
+      'projects.title': { fr: 'Projets', en: 'Projects' },
+      'projects.desc': { fr: 'Voici trois projets sélectionnés, dont un projet full-stack académique publié sur GitHub et deux autres projets développés pendant ma formation.', en: 'Here are three selected projects, including an academic full-stack project published on GitHub and two other projects developed during my training.' },
+      'btn.github': { fr: 'GitHub', en: 'GitHub' },
+      'modal.close.icon': { fr: '✕', en: '✕' },
+      'modal.title.default': { fr: 'Titre du projet', en: 'Project title' },
+      'modal.close': { fr: 'Fermer', en: 'Close' },
+      'experience.eyebrow': { fr: 'Parcours', en: 'Experience' },
+      'experience.title': { fr: 'Expérience professionnelle', en: 'Professional experience' },
+      'education.eyebrow': { fr: 'Études', en: 'Education' },
+      'education.title': { fr: 'Formation', en: 'Education' },
+      'education.badge.done.f': { fr: 'Diplômée', en: 'Graduate' },
+      'education.aec.title': { fr: 'AEC — Programmation Web et Mobile', en: 'AEC — Web and Mobile Programming' },
+      'education.aec.school': { fr: 'Institut Teccart — Montréal, QC', en: 'Institut Teccart — Montreal, QC' },
+      'skill.cybersecurity': { fr: 'Sécurité informatique', en: 'Cybersecurity' },
+      'skill.project.management': { fr: 'Gestion de projet', en: 'Project management' },
+      'education.badge.completed': { fr: 'Complété', en: 'Completed' },
+      'education.cs.title': { fr: 'Études en Génie Informatique', en: 'Computer Engineering Studies' },
+      'education.cs.school': { fr: 'École Supérieure de Technologie (EST) — Maroc', en: 'École Supérieure de Technologie (EST) — Morocco' },
+      'education.badge.progress': { fr: 'En cours', en: 'In progress' },
+      'education.google.period': { fr: 'Certification en cours de complétion', en: 'Certification in progress' },
+      'contact.eyebrow': { fr: 'Contact', en: 'Contact' },
       'footer.copyright': { fr: '© 2026 Nossaiba El Asri — Montréal, Québec', en: '© 2026 Nossaiba El Asri — Montreal, QC' }
     };
 
