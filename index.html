@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nossaiba El Asri — Développeuse Web Full-Stack & Technicienne IT bilingue à Montréal. React.js, Node.js, ASP.NET MVC, support technique." />
+  <meta name="description" content="Nossaiba El Asri — Développeuse Web Full-Stack & Technicienne IT bilingue à Montréal. React.js, Angular, FastAPI, MongoDB, support technique." />
   <meta name="author" content="Nossaiba El Asri" />
   <meta name="theme-color" content="#6C3CE0" />
   <title>Nossaiba El Asri — Développeuse Web & Technicienne IT</title>
+  <link rel="canonical" href="https://nossaiba-elas.github.io/Site-portfolio-personnel/" />
+  <meta name="keywords" content="Nossaiba El Asri, développeuse web, IT support, full-stack, React, Angular, FastAPI, MongoDB, Python, Montréal" />
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nossaiba El Asri — Développeuse Web & Technicienne IT" />
+  <meta property="og:description" content="Profil polyvalent IT — développement web, support, QA. Bilingue FR/EN. Disponible à Montréal." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/nossaiba-elas/Site-portfolio-personnel/main/IMG_4179.jpg" />
+  <meta property="og:url" content="https://nossaiba-elas.github.io/Site-portfolio-personnel/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Nossaiba El Asri","url":"https://nossaiba-elas.github.io/Site-portfolio-personnel/","sameAs":["https://www.linkedin.com/in/nossaiba-el-asri-69114b217","https://github.com/nossaiba-elas"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -105,6 +118,12 @@
       align-items: center;
     }
 
+    .nav-actions { display:inline-flex; gap:0.6rem; align-items:center; }
+    .nav-actions a.icon-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 0.6rem; border-radius:8px; background:transparent; border:1px solid transparent; color:var(--text); text-decoration:none; font-weight:700; }
+    .nav-actions a.icon-btn:hover { transform:translateY(-2px); color:var(--accent); }
+    .nav-actions a.resume-btn { padding:0.5rem 0.9rem; border-radius:12px; background:linear-gradient(90deg,var(--accent),var(--accent-light)); color:#fff; box-shadow:0 10px 30px var(--accent-glow); text-decoration:none; }
+    .lang-switch { margin-left: auto; }
+
     /* Nav search styles */
     .nav-search { position: relative; display: inline-block; margin-right: 0.5rem; }
     .search-input {
@@ -164,10 +183,10 @@
 
     /* Hero */
     .hero {
-      min-height: 100vh;
+      min-height: 76vh;
       display: grid;
       place-items: center;
-      padding-top: 72px;
+      padding-top: 56px;
       position: relative;
       overflow: hidden;
       background: radial-gradient(circle at top left, rgba(108, 60, 224, 0.18), transparent 22%),
@@ -187,10 +206,10 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 1fr);
-      gap: 3rem;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 1fr);
+      gap: 2rem;
       align-items: start;
-      padding: 4rem 0;
+      padding: 3rem 0;
     }
 
     .hero-copy {
@@ -458,6 +477,70 @@
     /* Photo wrapper responsive tweak: keep circular portrait on all sizes */
     .hero-photo-wrapper { max-width: 260px; width: 260px; height: 260px; border-radius: 50%; overflow: hidden; }
     @media (max-width: 768px) { .hero-photo-wrapper { width: 220px; height: 220px; margin: 0 auto 1.25rem; border-radius: 50%; } }
+
+    /* Projects: modern cards, tags and responsive layout */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.25rem 1rem;
+      box-shadow: 0 10px 30px rgba(16,24,40,0.04);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(16,24,40,0.07); }
+    .project-meta { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; }
+    .project-card h3 { margin-top: 0.25rem; margin-bottom: 0.25rem; font-size: 1.05rem; }
+    .project-summary { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .project-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 38px rgba(108, 60, 224, 0.08);
+      background: #F7F6FF;
+    }
+    .project-card.featured-project {
+      border-color: rgba(108, 60, 224, 0.22);
+      box-shadow: 0 22px 58px rgba(108, 60, 224, 0.12);
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    .project-tags { display:flex; flex-wrap:wrap; gap:0.45rem; margin-top:0.5rem; }
+    .project-tags span { background: #F7F6FF; color: var(--text); padding:0.35rem 0.6rem; border-radius:999px; font-size:0.78rem; border:1px solid rgba(108,60,224,0.06); }
+    .project-actions { display:flex; gap:0.6rem; margin-top:0.6rem; }
+    .btn-sm { padding:0.45rem 0.7rem; font-size:0.86rem; border-radius:10px; border:1px solid transparent; cursor:pointer; }
+    .btn-outline { background:transparent; border:1px solid rgba(16,24,40,0.06); }
+    .btn-primary-sm { background: linear-gradient(90deg, var(--accent), var(--accent-light)); color:#fff; box-shadow: 0 8px 30px var(--accent-glow); }
+    .project-detail { font-size:0.93rem; color:var(--text-muted); margin-top:0.4rem; }
+    .project-note { font-size:0.86rem; color:var(--text-muted); font-weight:600; margin-top:0.4rem; }
+
+    /* Modal for project details */
+    .modal-backdrop { position:fixed; inset:0; background:rgba(16,24,40,0.45); display:none; align-items:center; justify-content:center; z-index:1000; }
+    .modal { background:var(--bg-card); border-radius:12px; width:min(760px, 94%); max-height:86vh; overflow:auto; padding:1.25rem; box-shadow:0 30px 80px rgba(16,24,40,0.28); }
+    .modal h3 { margin-top:0; }
+    .modal .modal-sections { display:grid; gap:0.75rem; }
+    .modal .modal-actions { display:flex; gap:0.6rem; margin-top:0.5rem; }
+    .modal .muted { color:var(--text-muted); font-size:0.95rem; }
+
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card { padding:1rem; }
+    }
 
     /* Stats */
     .stats {
@@ -884,8 +967,17 @@
       .nav-links.open { display: flex; }
       .menu-btn { display: block; }
 
+      .nav-search { width: 100%; max-width: 420px; }
+      .search-input { width: 100%; max-width: 100%; }
+
       section { padding: 3.5rem 0; }
-      .hero-inner { padding: 2.5rem 0; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem 0;
+      }
+      .hero-copy { max-width: 100%; }
+      .hero-panel { padding: 1.8rem; }
       .stats { grid-template-columns: repeat(2, 1fr); margin-bottom: 3rem; }
       .about-grid { grid-template-columns: 1fr; }
       .hero-bg-text { display: none; }
@@ -895,9 +987,177 @@
     }
 
     @media (max-width: 400px) {
-      .stats { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr; }
       .container { padding: 0 1.1rem; }
+      .hero-inner { gap: 1.5rem; }
+      .hero-panel { padding: 1.25rem; }
+      .hero-photo-wrapper { width: 180px; height: 180px; }
     }
+
+    /* Final header cleanup: less crowded navigation */
+    nav .container {
+      justify-content: flex-start;
+      gap: 0.85rem;
+      height: 62px;
+      max-width: 1180px;
+    }
+
+    .logo {
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    /* Hide search from the top bar to keep the header clean */
+    .nav-search {
+      display: none !important;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      gap: 1.05rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .nav-actions {
+      gap: 0.35rem;
+      margin-left: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .nav-actions a.icon-btn {
+      padding: 0.28rem 0.42rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .nav-actions a.resume-btn {
+      padding: 0.32rem 0.55rem;
+      border-radius: 9px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(108, 60, 224, 0.14);
+      line-height: 1.2;
+    }
+
+    .lang-switch {
+      margin-left: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      padding: 0.22rem 0.38rem;
+      font-size: 0.78rem;
+      border-radius: 7px;
+    }
+
+    .project-card.featured-project {
+      min-height: auto;
+    }
+
+    @media (max-width: 980px) {
+      .nav-actions {
+        display: none;
+      }
+      .nav-links {
+        gap: 0.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav .container {
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      .nav-links {
+        margin-left: 0;
+      }
+      .lang-switch {
+        margin-left: 0;
+      }
+    }
+
+
+    /* Final portfolio cleanup */
+    .nav-actions a.resume-btn { display: none !important; }
+
+    #projets .section-description {
+      max-width: 780px;
+      margin-bottom: 2rem;
+    }
+
+    #projets .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    #projets .project-card {
+      min-height: 100%;
+      padding: 1.55rem;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfaff 100%);
+      border: 1px solid rgba(108, 60, 224, 0.12);
+      box-shadow: 0 18px 46px rgba(16,24,40,0.055);
+    }
+
+    #projets .project-card.featured-project {
+      border: 1.5px solid rgba(108, 60, 224, 0.35);
+      box-shadow: 0 24px 64px rgba(108,60,224,0.13);
+    }
+
+    #projets .project-meta {
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.28rem 0.62rem;
+      border-radius: 999px;
+      background: rgba(108, 60, 224, 0.08);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.85rem;
+    }
+
+    #projets .project-card h3 {
+      font-size: 1.08rem;
+      line-height: 1.32;
+      margin-bottom: 0.75rem;
+    }
+
+    #projets .project-summary {
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    #projets .project-note {
+      padding-top: 0.2rem;
+      font-size: 0.82rem;
+    }
+
+    #projets .project-actions {
+      margin-top: 0.9rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    #projets .btn-sm {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 960px) {
+      #projets .projects-grid { grid-template-columns: 1fr; }
+    }
+
+
   </style>
 </head>
 <body>
@@ -907,14 +1167,10 @@
     <div class="container">
       <a href="#" class="logo">Nossaiba El Asri</a>
       <div class="nav-search" role="search">
-        <input id="siteSearch" class="search-input" type="search" placeholder="Rechercher ( / )" aria-label="Rechercher le site" />
+        <input id="siteSearch" class="search-input" type="search" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria" placeholder="Rechercher ( / )" aria-label="Rechercher le site" />
           <div id="searchResults" class="search-results" aria-hidden="true"></div>
       </div>
       <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="lang-switch" aria-hidden="false">
-        <button class="lang-btn active" data-lang="fr">FR</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
         <li><a href="#competences" data-i18n="nav.skills">Compétences</a></li>
@@ -923,6 +1179,14 @@
         <li><a href="#formation" data-i18n="nav.education">Formation</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
+      <div class="nav-actions" aria-hidden="false">
+        <a href="https://github.com/nossaiba-elas" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">GitHub</a>
+        <a href="https://www.linkedin.com/in/nossaiba-el-asri-69114b217" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+      <div class="lang-switch" aria-hidden="false">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
   </nav>
 
@@ -999,8 +1263,8 @@
         <div class="stat-label" data-i18n="stat.exp">Années d'expérience professionnelle</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-target="4">0</div>
-        <div class="stat-label" data-i18n="stat.projects">Projets livrés et présentés</div>
+        <div class="stat-num" data-target="3">0</div>
+        <div class="stat-label" data-i18n="stat.projects">Projets présentés</div>
       </div>
       <div class="stat">
         <div class="stat-num" data-target="18">0</div>
@@ -1030,10 +1294,6 @@
           <div class="about-card">
             <strong>AEC Programmation Web &amp; Mobile</strong>
             <span>Institut Teccart — Diplômée</span>
-          </div>
-          <div class="about-card">
-            <strong>Développeuse Web Junior</strong>
-            <span>Sitel Maroc — PHP, JavaScript, SQL</span>
           </div>
           <div class="about-card">
             <strong>Technicienne IT</strong>
@@ -1174,34 +1434,91 @@
     <div class="container">
       <p class="section-eyebrow">Portfolio</p>
       <h2 class="section-title">Projets</h2>
-      <p class="section-description">Voici deux projets récents de 2025. J'ai réalisé de nombreux autres prototypes et applications que je peux présenter sur demande.</p>
+      <p class="section-description">Voici trois projets sélectionnés, dont un projet full-stack académique publié sur GitHub et deux autres projets développés pendant ma formation.</p>
       <div class="projects-grid">
-        <article class="project">
-          <p class="project-meta" data-i18n="project1.meta">Projet académique · 2025</p>
-          <h3 data-i18n="project1.title">Health Management System</h3>
-          <p data-i18n="project1.desc">Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.</p>
-          <div class="tags">
-            <span>ASP.NET MVC</span>
-            <span>C#</span>
-            <span>SQL Server</span>
-            <span>Laravel</span>
-            <span>MySQL</span>
+        <article class="project-card featured-project" data-project="project0">
+          <p class="project-meta" data-i18n="project0.meta">Projet académique individuel · 2026</p>
+          <h3 data-i18n="project0.title">User Management System – Full-Stack CRUD Application</h3>
+          <p class="project-summary" data-i18n="project0.desc">Application Full-Stack CRUD permettant de gérer des profils utilisateurs à travers une API REST FastAPI et une base de données MongoDB. Le projet inclut trois interfaces frontend : React, Angular et HTML/CSS/JavaScript.</p>
+          <div class="project-tags" aria-hidden="false">
+            <span>React</span>
+            <span>Angular</span>
+            <span>JavaScript</span>
+            <span>FastAPI</span>
+            <span>Python</span>
+            <span>MongoDB</span>
+            <span>REST API</span>
+          </div>
+          <div class="project-note" data-i18n="project0.note">Code source et README disponibles sur GitHub</div>
+          <div class="project-actions">
+            <button class="btn-sm btn-outline" data-project-open="project0" data-i18n="project.btn.details">Voir détails</button>
+            <a class="btn-sm btn-primary-sm project-link" href="https://github.com/nossaiba-elas/user-management-system" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <div class="project-detail" aria-hidden="true">
+            <strong data-i18n="project.context">Contexte :</strong>
+            <span data-i18n="project0.context">Projet académique développé individuellement pour pratiquer l'intégration frontend/backend et la consommation d'une API REST avec plusieurs technologies frontend.</span>
           </div>
         </article>
 
-        <article class="project">
+        <article class="project-card" data-project="project1">
+          <p class="project-meta" data-i18n="project1.meta">Projet académique · 2025</p>
+          <h3 data-i18n="project1.title">Health Management System</h3>
+          <p class="project-summary" data-i18n="project1.desc">Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.</p>
+          <div class="project-tags" aria-hidden="false">
+            <span>ASP.NET MVC</span>
+            <span>C#</span>
+            <span>SQL Server</span>
+            <span>REST API</span>
+            <span>UML</span>
+            <span>Auth</span>
+          </div>
+          <div class="project-note" data-i18n="project.docRequest">Documentation disponible sur demande</div>
+          <div class="project-actions">
+            <button class="btn-sm btn-outline" data-project-open="project1" data-i18n="project.btn.details">Voir détails</button>
+          </div>
+          <div class="project-detail" aria-hidden="true">
+            <strong data-i18n="project.context">Contexte :</strong>
+            <span data-i18n="project1.context">Projet académique pour simuler la gestion d'un centre de soins primaires, axé sur la robustesse et la documentation.</span>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="project2">
           <p class="project-meta" data-i18n="project2.meta">Projet académique · 2025</p>
           <h3 data-i18n="project2.title">VroomVroom — Plateforme de covoiturage</h3>
-          <p data-i18n="project2.desc">Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.</p>
-          <div class="tags">
+          <p class="project-summary" data-i18n="project2.desc">Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.</p>
+          <div class="project-tags">
             <span>React.js</span>
             <span>HTML / CSS / JS</span>
             <span>FastAPI</span>
             <span>MySQL</span>
             <span>Google Maps API</span>
           </div>
+          <div class="project-note" data-i18n="project.docRequest">Documentation disponible sur demande</div>
+          <div class="project-actions">
+            <button class="btn-sm btn-outline" data-project-open="project2" data-i18n="project.btn.details">Voir détails</button>
+          </div>
+          <div class="project-detail" aria-hidden="true">
+            <strong data-i18n="project.context">Contexte :</strong>
+            <span data-i18n="project2.context">Projet de plateforme de covoiturage académique, axé sur l'expérience utilisateur mobile et l'intégration d'APIs externes.</span>
+          </div>
         </article>
 
+      </div>
+
+      <!-- Project details modal -->
+      <div id="projectModalBackdrop" class="modal-backdrop" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+          <button id="projectModalClose" class="btn-sm btn-outline" style="float:right;">✕</button>
+          <h3 id="projectModalTitle">Titre du projet</h3>
+          <div id="projectModalBody" class="modal-sections">
+            <!-- Filled by JS -->
+          </div>
+          <div class="modal-actions">
+            <a id="modalDocLink" class="btn-sm btn-outline" target="_blank" rel="noopener" href="#">Documentation</a>
+            <a id="modalReportLink" class="btn-sm btn-outline" target="_blank" rel="noopener" href="#">Rapport</a>
+            <button id="modalCloseBtn" class="btn-sm btn-primary-sm">Fermer</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1218,47 +1535,32 @@
         <div class="exp-item">
           <div class="exp-header">
             <div>
-              <h3 data-i18n="exp1.title">Commis fruits et légumes</h3>
-              <p class="exp-org" data-i18n="exp1.org">Metro Notre-Dame — Montréal, QC</p>
+              <h3 data-i18n="exp1.title">Agent de support technique</h3>
+              <p class="exp-org" data-i18n="exp1.org">Sitel Morocco</p>
             </div>
-            <span class="exp-date" data-i18n="exp1.date">Sep 2024 — Fév 2026</span>
+            <span class="exp-date" data-i18n="exp1.date">Mai 2022 — Août 2023</span>
           </div>
           <ul class="exp-bullets">
-            <li data-i18n="exp1.b1">Gestion des demandes clients et résolution proactive des problèmes.</li>
-            <li data-i18n="exp1.b2">Correction des écarts de caisse et production de rapports précis.</li>
-            <li data-i18n="exp1.b3">Formation des nouveaux employés sur les outils et procédures internes.</li>
-            <li data-i18n="exp1.b4">Travail d'équipe efficace en période très achalandée.</li>
+            <li data-i18n="exp1.b1">Réponse aux demandes des clients par chat et par email tout en maintenant des standards de service professionnels.</li>
+            <li data-i18n="exp1.b2">Mise à jour des informations clients et maintien de dossiers précis.</li>
+            <li data-i18n="exp1.b3">Escalade des problèmes techniques et clients complexes selon les procédures établies.</li>
+            <li data-i18n="exp1.b4">Communication efficace avec les équipes internes afin d’assurer une résolution rapide des problèmes.</li>
           </ul>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
             <div>
-              <h3 data-i18n="exp2.title">Développeuse Web Junior</h3>
-              <p class="exp-org" data-i18n="exp2.org">Sitel Maroc</p>
+              <h3 data-i18n="exp2.title">Commis fruits et légumes</h3>
+              <p class="exp-org" data-i18n="exp2.org">Metro Notre-Dame — Montréal, QC</p>
             </div>
-            <span class="exp-date" data-i18n="exp2.date">Mai 2022 — Août 2023</span>
+            <span class="exp-date" data-i18n="exp2.date">Sep 2024 — Fév 2026</span>
           </div>
           <ul class="exp-bullets">
-            <li data-i18n="exp2.b1">Développement et maintenance de fonctionnalités web en PHP, JavaScript, HTML/CSS.</li>
-            <li data-i18n="exp2.b2">Analyse des bogues, tests fonctionnels et optimisation de l'expérience utilisateur.</li>
-            <li data-i18n="exp2.b3">Requêtes SQL pour extraire, corriger et valider les données métiers.</li>
-            <li data-i18n="exp2.b4">Participation aux sprints Agile et collaboration avec les équipes QA.</li>
-          </ul>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <div>
-              <h3 data-i18n="exp3.title">Stagiaire en communication</h3>
-              <p class="exp-org" data-i18n="exp3.org">Intelcia Morocco</p>
-            </div>
-            <span class="exp-date" data-i18n="exp3.date">Juin 2021 — Août 2021</span>
-          </div>
-          <ul class="exp-bullets">
-            <li data-i18n="exp3.b1">Support technique par chat et courriel pour des utilisateurs internes.</li>
-            <li data-i18n="exp3.b2">Rédaction de guides IT et documentation pour les équipes.</li>
-            <li data-i18n="exp3.b3">Routage des cas complexes vers les spécialistes appropriés.</li>
+            <li data-i18n="exp2.b1">Gestion des demandes clients et résolution proactive des problèmes.</li>
+            <li data-i18n="exp2.b2">Correction des écarts de caisse et production de rapports précis.</li>
+            <li data-i18n="exp2.b3">Formation des nouveaux employés sur les outils et procédures internes.</li>
+            <li data-i18n="exp2.b4">Travail d'équipe efficace en période très achalandée.</li>
           </ul>
         </div>
 
@@ -1576,7 +1878,7 @@
       'resume.link': { fr: 'LinkedIn', en: 'LinkedIn' },
 
       'stat.exp': { fr: "Années d'expérience professionnelle", en: 'Years of professional experience' },
-      'stat.projects': { fr: 'Projets livrés et présentés', en: 'Projects delivered & presented' },
+      'stat.projects': { fr: 'Projets présentés', en: 'Projects showcased' },
       'stat.tools': { fr: 'Technologies et outils maîtrisés', en: 'Technologies & tools' },
       'stat.langs': { fr: 'Langues parlées', en: 'Languages spoken' },
       'search.placeholder': { fr: 'Rechercher sur le site…', en: 'Search the site…' },
@@ -1594,6 +1896,10 @@
       'contact.linkedin': { fr: 'LinkedIn', en: 'LinkedIn' },
 
       /* Projects */
+      'project0.meta': { fr: 'Projet académique individuel · 2026', en: 'Individual academic project · 2026' },
+      'project0.title': { fr: 'User Management System – Application Full-Stack CRUD', en: 'User Management System – Full-Stack CRUD Application' },
+      'project0.desc': { fr: "Application Full-Stack CRUD permettant de gérer des profils utilisateurs à travers une API REST FastAPI et une base de données MongoDB. Le projet inclut trois interfaces frontend : React, Angular et HTML/CSS/JavaScript.", en: 'Full-Stack web application for creating, searching, updating and deleting user profiles with photos, descriptions and creation dates. Three frontend implementations communicate with the same FastAPI API and MongoDB database.' },
+      'project0.note': { fr: 'Code source et README disponibles sur GitHub', en: 'Source code and README available on GitHub' },
       'project1.meta': { fr: 'Projet académique · 2025', en: 'Academic project · 2025' },
       'project1.title': { fr: 'Health Management System', en: 'Health Management System' },
       'project1.desc': { fr: "Système complet de gestion de patients avec prise de rendez-vous, notifications et architecture MVC. Base de données SQL Server, documentation UML, APIs REST et authentification utilisateur.", en: 'Complete patient management system with appointment booking, notifications and MVC architecture. SQL Server DB, UML documentation, REST APIs and user authentication.' },
@@ -1601,31 +1907,45 @@
       'project2.meta': { fr: 'Projet académique · 2025', en: 'Academic project · 2025' },
       'project2.title': { fr: 'VroomVroom — Plateforme de covoiturage', en: 'VroomVroom — Ridesharing platform' },
       'project2.desc': { fr: "Application responsive de covoiturage avec messagerie en temps réel, authentification utilisateur, intégration Google Maps API et gestion optimisée de base de données MySQL.", en: 'Responsive ridesharing app with real-time messaging, user authentication, Google Maps API integration and optimized MySQL database management.' },
+'search.placeholder': { fr: 'Rechercher sur le site…', en: 'Search the site…' },
+      'search.aria': { fr: 'Rechercher le site', en: 'Search the site' },
+      'project0.context': { fr: "Projet académique développé individuellement pour pratiquer l'intégration frontend/backend et la consommation d'une API REST avec plusieurs technologies frontend.", en: 'Individual academic project built to practice frontend/backend integration and REST API consumption using multiple frontend technologies.' },
+      'project0.features': { fr: "CRUD complet · Recherche en temps réel · Upload d'images · Descriptions utilisateurs · Dates de création · API REST partagée", en: 'Complete CRUD · Real-time search · Image upload · User descriptions · Creation dates · Shared REST API' },
+      'project0.tech': { fr: "React, Angular, HTML/CSS/JavaScript, FastAPI, Python, MongoDB", en: 'React, Angular, HTML/CSS/JavaScript, FastAPI, Python, MongoDB' },
+      'project0.skills': { fr: "Développement full-stack · Intégration API · Gestion de base de données · Interface responsive · Documentation GitHub", en: 'Full-stack development · API integration · Database management · Responsive UI · GitHub documentation' },
+
+      'project1.context': { fr: "Projet académique pour simuler la gestion d'un centre de soins primaires, axé sur la robustesse et la documentation.", en: 'Academic project simulating patient center management, focused on reliability and documentation.' },
+      'project1.features': { fr: "Gestion patients · Prise de rendez-vous · Notifications · Authentification · REST APIs", en: 'Patient management · Appointment booking · Notifications · Authentication · REST APIs' },
+      'project1.tech': { fr: "ASP.NET MVC, C#, SQL Server, UML, REST", en: 'ASP.NET MVC, C#, SQL Server, UML, REST' },
+      'project1.skills': { fr: "Architecture MVC · Modélisation UML · Sécurité · Tests", en: 'MVC architecture · UML modeling · Security · Testing' },
+
+      'project2.context': { fr: "Projet académique axé sur l'expérience mobile et l'intégration d'APIs (cartes et messagerie).", en: 'Academic project focused on mobile UX and API integrations (maps & messaging).' },
+      'project2.features': { fr: "Recherche trajets · Messagerie temps réel · Auth · Cartes GPS", en: 'Trip search · Real-time messaging · Auth · Maps integration' },
+      'project2.tech': { fr: "React.js, FastAPI, MySQL, Google Maps API, WebSockets", en: 'React.js, FastAPI, MySQL, Google Maps API, WebSockets' },
+      'project2.skills': { fr: "Frontend réactif · API design · Base de données · Tests fonctionnels", en: 'Responsive frontend · API design · Databases · Functional testing' },
+
+      'project.docRequest': { fr: 'Documentation disponible sur demande', en: 'Documentation available on request' },
+      'project.btn.details': { fr: 'Voir détails', en: 'View details' },
+      'project.btn.doc': { fr: 'Documentation', en: 'Documentation' },
+      'project.btn.report': { fr: 'Rapport', en: 'Report' },
+      'project.context': { fr: 'Contexte', en: 'Context' },
 
       /* Experience */
-      'exp1.title': { fr: 'Commis fruits et légumes', en: 'Produce clerk' },
-      'exp1.org': { fr: 'Metro Notre-Dame — Montréal, QC', en: 'Metro Notre-Dame — Montreal, QC' },
-      'exp1.date': { fr: 'Sep 2024 — Fév 2026', en: 'Sep 2024 — Feb 2026' },
-      'exp1.b1': { fr: 'Gestion des demandes clients et résolution proactive des problèmes.', en: 'Handled customer requests and proactively resolved issues.' },
-      'exp1.b2': { fr: 'Correction des écarts de caisse et production de rapports précis.', en: 'Reconciled cash discrepancies and produced accurate reports.' },
-      'exp1.b3': { fr: 'Formation des nouveaux employés sur les outils et procédures internes.', en: 'Trained new staff on internal tools and procedures.' },
-      'exp1.b4': { fr: 'Travail d\'équipe efficace en période très achalandée.', en: 'Worked effectively as part of a team during high-traffic periods.' },
+      'exp1.title': { fr: 'Agent de support technique', en: 'Technical Support Agent' },
+      'exp1.org': { fr: 'Sitel Morocco', en: 'Sitel Morocco' },
+      'exp1.date': { fr: 'Mai 2022 — Août 2023', en: 'May 2022 — Aug 2023' },
+      'exp1.b1': { fr: 'Réponse aux demandes des clients par chat et par email tout en maintenant des standards de service professionnels.', en: 'Responded to customer inquiries through chat and email while maintaining professional service standards.' },
+      'exp1.b2': { fr: 'Mise à jour des informations clients et maintien de dossiers précis.', en: 'Updated customer information and maintained accurate records.' },
+      'exp1.b3': { fr: 'Escalade des problèmes techniques et clients complexes selon les procédures établies.', en: 'Escalated complex technical and customer issues following established procedures.' },
+      'exp1.b4': { fr: 'Communication efficace avec les équipes internes afin d’assurer une résolution rapide des problèmes.', en: 'Communicated effectively with internal teams to ensure timely issue resolution.' },
 
-      'exp2.title': { fr: 'Développeuse Web Junior', en: 'Junior Web Developer' },
-      'exp2.org': { fr: 'Sitel Maroc', en: 'Sitel Morocco' },
-      'exp2.date': { fr: 'Mai 2022 — Août 2023', en: 'May 2022 — Aug 2023' },
-      'exp2.b1': { fr: 'Développement et maintenance de fonctionnalités web en PHP, JavaScript, HTML/CSS.', en: 'Developed and maintained web features using PHP, JavaScript, HTML/CSS.' },
-      'exp2.b2': { fr: 'Analyse des bogues, tests fonctionnels et optimisation de l\'expérience utilisateur.', en: 'Analyzed bugs, performed functional testing and optimized user experience.' },
-      'exp2.b3': { fr: 'Requêtes SQL pour extraire, corriger et valider les données métiers.', en: 'Wrote SQL queries to extract, correct and validate business data.' },
-      'exp2.b4': { fr: 'Participation aux sprints Agile et collaboration avec les équipes QA.', en: 'Participated in Agile sprints and collaborated with QA teams.' },
-
-      'exp3.title': { fr: 'Stagiaire en communication', en: 'Communication Intern' },
-      'exp3.org': { fr: 'Intelcia Morocco', en: 'Intelcia Morocco' },
-      'exp3.date': { fr: 'Juin 2021 — Août 2021', en: 'Jun 2021 — Aug 2021' },
-      'exp3.b1': { fr: 'Support technique par chat et courriel pour des utilisateurs internes.', en: 'Provided technical support via chat and email to internal users.' },
-      'exp3.b2': { fr: 'Rédaction de guides IT et documentation pour les équipes.', en: 'Authored IT guides and documentation for teams.' },
-      'exp3.b3': { fr: 'Routage des cas complexes vers les spécialistes appropriés.', en: 'Routed complex cases to the appropriate specialists.' },
-
+      'exp2.title': { fr: 'Commis fruits et légumes', en: 'Produce Clerk' },
+      'exp2.org': { fr: 'Metro Notre-Dame — Montréal, QC', en: 'Metro Notre-Dame — Montreal, QC' },
+      'exp2.date': { fr: 'Sep 2024 — Fév 2026', en: 'Sep 2024 — Feb 2026' },
+      'exp2.b1': { fr: 'Gestion des demandes clients et résolution proactive des problèmes.', en: 'Handled customer requests and proactively resolved issues.' },
+      'exp2.b2': { fr: 'Correction des écarts de caisse et production de rapports précis.', en: 'Reconciled cash discrepancies and produced accurate reports.' },
+      'exp2.b3': { fr: 'Formation des nouveaux employés sur les outils et procédures internes.', en: 'Trained new staff on internal tools and procedures.' },
+      'exp2.b4': { fr: 'Travail d\'équipe efficace en période très achalandée.', en: 'Worked effectively as part of a team during high-traffic periods.' },
       'footer.copyright': { fr: '© 2026 Nossaiba El Asri — Montréal, Québec', en: '© 2026 Nossaiba El Asri — Montreal, QC' }
     };
 
@@ -1676,6 +1996,69 @@
         });
       }, hideMs);
     }
+
+    // Project modal: open/close and localized content
+    const projectModalBackdrop = document.getElementById('projectModalBackdrop');
+    const projectModalTitle = document.getElementById('projectModalTitle');
+    const projectModalBody = document.getElementById('projectModalBody');
+    const modalDocLink = document.getElementById('modalDocLink');
+    const modalReportLink = document.getElementById('modalReportLink');
+    const projectModalClose = document.getElementById('projectModalClose');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+    function openProjectModal(id) {
+      const lang = localStorage.getItem('site-lang') || 'fr';
+      const titleKey = id + '.title';
+      const contextKey = id + '.context';
+      const featuresKey = id + '.features';
+      const techKey = id + '.tech';
+      const skillsKey = id + '.skills';
+
+      projectModalTitle.textContent = (translations[titleKey] && translations[titleKey][lang]) || document.querySelector('[data-project="'+id+'"] h3')?.textContent || '';
+      projectModalBody.innerHTML = `
+        <div><strong>${translations['project.context'] ? translations['project.context'][lang] : (lang === 'fr' ? 'Contexte' : 'Context')}:</strong>
+          <div class="muted">${(translations[contextKey] && translations[contextKey][lang]) || ''}</div>
+        </div>
+        <div><strong>${lang === 'fr' ? 'Fonctionnalités principales' : 'Main features'}:</strong>
+          <div class="muted">${(translations[featuresKey] && translations[featuresKey][lang]) || ''}</div>
+        </div>
+        <div><strong>${lang === 'fr' ? 'Technologies' : 'Technologies'}:</strong>
+          <div class="muted">${(translations[techKey] && translations[techKey][lang]) || ''}</div>
+        </div>
+        <div><strong>${lang === 'fr' ? 'Compétences démontrées' : 'Skills demonstrated'}:</strong>
+          <div class="muted">${(translations[skillsKey] && translations[skillsKey][lang]) || ''}</div>
+        </div>
+      `;
+
+      // Show GitHub link for the User Management System project
+      if (id === 'project0') {
+        modalDocLink.href = 'https://github.com/nossaiba-elas/user-management-system';
+        modalDocLink.textContent = 'GitHub';
+        modalDocLink.style.display = 'inline-flex';
+        modalReportLink.href = '#';
+        modalReportLink.style.display = 'none';
+      } else {
+        modalDocLink.href = '#';
+        modalDocLink.style.display = 'none';
+        modalReportLink.href = '#';
+        modalReportLink.style.display = 'none';
+      }
+
+      projectModalBackdrop.style.display = 'flex';
+      projectModalBackdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeProjectModal() {
+      projectModalBackdrop.style.display = 'none';
+      projectModalBackdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-project-open]').forEach(btn => {
+      btn.addEventListener('click', () => openProjectModal(btn.dataset.projectOpen));
+    });
+    projectModalClose.addEventListener('click', closeProjectModal);
+    modalCloseBtn.addEventListener('click', closeProjectModal);
+    projectModalBackdrop.addEventListener('click', (e) => { if (e.target === projectModalBackdrop) closeProjectModal(); });
 
     // Wire up language buttons to animated switch
     document.querySelectorAll('.lang-btn').forEach(btn => {
