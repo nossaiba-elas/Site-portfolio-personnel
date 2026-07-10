@@ -1494,8 +1494,32 @@
 <div class="container">
 <p class="section-eyebrow" data-i18n="projects.eyebrow">Portfolio</p>
 <h2 class="section-title" data-i18n="projects.title">Projets</h2>
-<p class="section-description" data-i18n="projects.desc">Voici trois projets sélectionnés, dont un projet full-stack académique publié sur GitHub et deux autres projets développés pendant ma formation.</p>
+<p class="section-description" data-i18n="projects.desc">Voici quatre projets sélectionnés, dont deux projets full-stack publiés sur GitHub avec démonstration en ligne, et deux autres projets développés pendant ma formation.</p>
 <div class="projects-grid">
+<article class="project-card featured-project" data-project="projectGJS">
+<p class="project-meta" data-i18n="projectGJS.meta">Projet portfolio · 2026</p>
+<h3 data-i18n="projectGJS.title">Global Jersey Store – Full-Stack E-Commerce Application</h3>
+<p class="project-summary" data-i18n="projectGJS.desc">Application e-commerce complète spécialisée dans les maillots de football internationaux. Parcours d'achat complet, authentification Google, dashboard administrateur, suivi de commandes et pipeline CI/CD automatisé.</p>
+<div aria-hidden="false" class="project-tags">
+<span>Next.js 15</span>
+<span>TypeScript</span>
+<span>Tailwind CSS</span>
+<span>Firebase</span>
+<span>Zustand</span>
+<span>Vercel</span>
+<span>CI/CD</span>
+</div>
+<div class="project-note" data-i18n="projectGJS.note">Application en ligne · Code source disponible sur GitHub</div>
+<div class="project-actions">
+<button class="btn-sm btn-outline" data-i18n="project.btn.details" data-project-open="projectGJS">Voir détails</button>
+<a class="btn-sm btn-primary-sm project-link" href="https://global-jersey-store.vercel.app" rel="noopener" target="_blank">🔗 Live Demo</a>
+<a class="btn-sm btn-outline project-link" href="https://github.com/nossaiba-elas/global-jersey-store" rel="noopener" target="_blank">GitHub</a>
+</div>
+<div aria-hidden="true" class="project-detail">
+<strong data-i18n="project.context">Contexte :</strong>
+<span data-i18n="projectGJS.context">Projet portfolio personnel pour démontrer les compétences en développement web full-stack moderne, de l'architecture à l'authentification, en passant par le CI/CD et le déploiement cloud.</span>
+</div>
+</article>
 <article class="project-card featured-project" data-project="project0">
 <p class="project-meta" data-i18n="project0.meta">Projet académique individuel · 2026</p>
 <h3 data-i18n="project0.title">User Management System – Full-Stack CRUD Application</h3>
@@ -1937,6 +1961,15 @@
       'contact.linkedin': { fr: 'LinkedIn', en: 'LinkedIn' },
 
       /* Projects */
+
+      'projectGJS.meta': { fr: 'Projet portfolio · 2026', en: 'Portfolio project · 2026' },
+      'projectGJS.title': { fr: 'Global Jersey Store – Application E-Commerce Full-Stack', en: 'Global Jersey Store – Full-Stack E-Commerce Application' },
+      'projectGJS.desc': { fr: "Application e-commerce complète spécialisée dans les maillots de football internationaux. Parcours d'achat complet, authentification Google, dashboard administrateur, suivi de commandes et pipeline CI/CD automatisé.", en: 'Full-stack e-commerce application for international football jerseys. Complete shopping flow, Google authentication, admin dashboard, order tracking, and automated CI/CD pipeline.' },
+      'projectGJS.note': { fr: 'Application en ligne · Code source disponible sur GitHub', en: 'Live application · Source code available on GitHub' },
+      'projectGJS.context': { fr: "Projet portfolio personnel pour démontrer les compétences en développement web full-stack moderne, de l'architecture à l'authentification, en passant par le CI/CD et le déploiement cloud.", en: 'Personal portfolio project to demonstrate modern full-stack web development skills — from architecture and authentication to CI/CD and cloud deployment.' },
+      'projectGJS.features': { fr: "Catalogue produits · Panier & Wishlist · Checkout · Suivi commandes GJS-2026-XXXXXX · Auth Google Firebase · Dashboard Admin · Dark/Light mode · CI/CD GitHub Actions + Vercel", en: 'Product catalogue · Cart & Wishlist · Checkout · Order tracking GJS-2026-XXXXXX · Firebase Google Auth · Admin Dashboard · Dark/Light mode · CI/CD GitHub Actions + Vercel' },
+      'projectGJS.tech': { fr: "Next.js 15, TypeScript, Tailwind CSS, Zustand, Firebase, Vercel, GitHub Actions", en: 'Next.js 15, TypeScript, Tailwind CSS, Zustand, Firebase, Vercel, GitHub Actions' },
+      'projectGJS.skills': { fr: "Développement React/Next.js · TypeScript strict · Gestion d'état · OAuth · CI/CD · Design UI/UX responsive · Déploiement cloud", en: 'React/Next.js development · Strict TypeScript · State management · OAuth · CI/CD · Responsive UI/UX design · Cloud deployment' },
       'project0.meta': { fr: 'Projet académique individuel · 2026', en: 'Individual academic project · 2026' },
       'project0.title': { fr: 'User Management System – Application Full-Stack CRUD', en: 'User Management System – Full-Stack CRUD Application' },
       'project0.desc': { fr: "Application Full-Stack CRUD permettant de gérer des profils utilisateurs à travers une API REST FastAPI et une base de données MongoDB. Le projet inclut trois interfaces frontend : React, Angular et HTML/CSS/JavaScript.", en: 'Full-Stack web application for creating, searching, updating and deleting user profiles with photos, descriptions and creation dates. Three frontend implementations communicate with the same FastAPI API and MongoDB database.' },
@@ -2027,7 +2060,7 @@
       'interest.inclusive': { fr: 'Travail en équipe inclusive', en: 'Inclusive teamwork' },
       'projects.eyebrow': { fr: 'Portfolio', en: 'Portfolio' },
       'projects.title': { fr: 'Projets', en: 'Projects' },
-      'projects.desc': { fr: 'Voici trois projets sélectionnés, dont un projet full-stack académique publié sur GitHub et deux autres projets développés pendant ma formation.', en: 'Here are three selected projects, including an academic full-stack project published on GitHub and two other projects developed during my training.' },
+      'projects.desc': { fr: 'Voici quatre projets sélectionnés, dont deux projets full-stack publiés sur GitHub avec démonstration en ligne, et deux autres développés pendant ma formation.', en: 'Here are three selected projects, including an academic full-stack project published on GitHub and two other projects developed during my training.' },
       'btn.github': { fr: 'GitHub', en: 'GitHub' },
       'modal.close.icon': { fr: '✕', en: '✕' },
       'modal.title.default': { fr: 'Titre du projet', en: 'Project title' },
@@ -2131,8 +2164,15 @@
         </div>
       `;
 
-      // Show GitHub link for the User Management System project
-      if (id === 'project0') {
+      // Show links depending on project
+      if (id === 'projectGJS') {
+        modalDocLink.href = 'https://global-jersey-store.vercel.app';
+        modalDocLink.textContent = '🔗 Live Demo';
+        modalDocLink.style.display = 'inline-flex';
+        modalReportLink.href = 'https://github.com/nossaiba-elas/global-jersey-store';
+        modalReportLink.textContent = 'GitHub';
+        modalReportLink.style.display = 'inline-flex';
+      } else if (id === 'project0') {
         modalDocLink.href = 'https://github.com/nossaiba-elas/user-management-system';
         modalDocLink.textContent = 'GitHub';
         modalDocLink.style.display = 'inline-flex';
